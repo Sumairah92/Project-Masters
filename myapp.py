@@ -29,15 +29,21 @@ for result in parsedResult:
 #	print result['switchDPID']
 	Network.add_node(result['switchDPID'], address=result['inetAddress'])
 	
-print Network.nodes(data=True)
+#print Network.nodes(data=True)
 #get statistics
 '''
 enable statistics in the switches
-
-command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
-os.popen(command).read()
-command
 '''
+#command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
+#os.popen(command).read()
+command = "curl http://%s/wm/statistics/bandwidth/\"all\"/\"all\"/json" % controllerIp
+result=os.popen(command).read()
+parsedResult = json.loads(result)
+for result in parsedResult:
+	print "DPID: %s" % result['dpid']
+	print "bits-per-second-rx: %s" % result['bits-per-second-rx']
+	print "bits-per-second-tx: %s" %result['bits-per-second-tx']
+
 #add route
 
 
