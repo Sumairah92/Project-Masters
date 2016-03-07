@@ -12,8 +12,8 @@
 
 # Command Line History (newest to oldest):
 :wq!
-:50
 :q!
+:50
 
 # Search String History (newest to oldest):
 ?/link-0
@@ -48,43 +48,44 @@
 		
 
 # File marks:
-'0  49  0  ~/myapp.py
-'1  45  29  ~/myapp.py
-'2  44  33  ~/myapp.py
-'3  21  0  ~/myapp.py
-'4  43  20  ~/myapp.py
-'5  42  17  ~/myapp.py
-'6  38  0  ~/myapp.py
-'7  39  68  ~/myapp.py
-'8  40  12  ~/myapp.py
-'9  3  35  ~/read.py
+'0  24  97  ~/myapp.py
+'1  31  0  ~/myapp.py
+'2  50  0  ~/myapp.py
+'3  42  0  ~/myapp.py
+'4  46  29  ~/myapp.py
+'5  45  33  ~/myapp.py
+'6  21  0  ~/myapp.py
+'7  44  20  ~/myapp.py
+'8  43  17  ~/myapp.py
+'9  39  0  ~/myapp.py
 
 # Jumplist (newest first):
--'  49  0  ~/myapp.py
+-'  24  97  ~/myapp.py
 -'  1  0  ~/myapp.py
--'  45  29  ~/myapp.py
--'  44  33  ~/myapp.py
+-'  31  0  ~/myapp.py
+-'  50  0  ~/myapp.py
+-'  42  0  ~/myapp.py
+-'  46  29  ~/myapp.py
+-'  45  33  ~/myapp.py
 -'  21  0  ~/myapp.py
--'  43  20  ~/myapp.py
--'  42  17  ~/myapp.py
--'  38  0  ~/myapp.py
--'  39  68  ~/myapp.py
--'  40  12  ~/myapp.py
+-'  44  20  ~/myapp.py
+-'  43  17  ~/myapp.py
+-'  39  0  ~/myapp.py
+-'  40  68  ~/myapp.py
+-'  41  12  ~/myapp.py
 -'  3  35  ~/read.py
 -'  1  0  ~/read.py
--'  32  28  ~/myapp.py
--'  27  0  ~/myapp.py
--'  30  16  ~/myapp.py
--'  33  21  ~/myapp.py
+-'  33  28  ~/myapp.py
+-'  28  0  ~/myapp.py
+-'  34  21  ~/myapp.py
 -'  10  0  ~/myapp.py
--'  24  56  ~/myapp.py
--'  29  0  ~/myapp.py
+-'  30  0  ~/myapp.py
 -'  8  29  ~/myapp.py
--'  34  0  ~/myapp.py
+-'  35  0  ~/myapp.py
 -'  18  0  ~/myapp.py
 -'  19  25  ~/myapp.py
 -'  22  2  ~/myapp.py
--'  50  12  ~/myapp.py
+-'  51  12  ~/myapp.py
 -'  10  0  ~/read.py
 -'  11  34  ~/read.py
 -'  13  4  ~/read.py
@@ -98,52 +99,52 @@
 -'  6  0  ~/read.py
 -'  16  0  ~/myapp.py
 -'  23  0  ~/topology.xml
--'  48  0  ~/myapp.py
+-'  49  0  ~/myapp.py
 -'  2  0  ~/read.py
 -'  210  0  ~/topology.xml
 -'  4  30  ~/read.py
--'  26  31  ~/myapp.py
--'  52  0  ~/myapp.py
--'  70  25  ~/myapp.py
--'  91  9  ~/myapp.py
--'  73  72  ~/myapp.py
--'  86  0  ~/myapp.py
--'  92  0  ~/myapp.py
--'  88  9  ~/myapp.py
+-'  27  31  ~/myapp.py
+-'  53  0  ~/myapp.py
+-'  71  25  ~/myapp.py
+-'  92  9  ~/myapp.py
+-'  74  72  ~/myapp.py
+-'  87  0  ~/myapp.py
+-'  93  0  ~/myapp.py
+-'  89  9  ~/myapp.py
+-'  78  0  ~/myapp.py
+-'  90  10  ~/myapp.py
+-'  88  7  ~/myapp.py
+-'  73  12  ~/myapp.py
+-'  86  7  ~/myapp.py
+-'  85  13  ~/myapp.py
+-'  76  0  ~/myapp.py
+-'  94  0  ~/myapp.py
 -'  77  0  ~/myapp.py
--'  89  10  ~/myapp.py
--'  87  7  ~/myapp.py
+-'  91  12  ~/myapp.py
 -'  72  12  ~/myapp.py
--'  85  7  ~/myapp.py
 -'  84  13  ~/myapp.py
 -'  75  0  ~/myapp.py
--'  93  0  ~/myapp.py
--'  76  0  ~/myapp.py
--'  90  12  ~/myapp.py
--'  71  12  ~/myapp.py
--'  83  13  ~/myapp.py
--'  74  0  ~/myapp.py
--'  94  0  ~/myapp.py
--'  79  0  ~/myapp.py
 -'  95  0  ~/myapp.py
--'  78  0  ~/myapp.py
+-'  80  0  ~/myapp.py
+-'  96  0  ~/myapp.py
+-'  79  0  ~/myapp.py
 -'  4  0  ~/myapp.py
--'  51  25  ~/myapp.py
--'  54  72  ~/myapp.py
--'  67  0  ~/myapp.py
--'  69  9  ~/myapp.py
+-'  52  25  ~/myapp.py
+-'  55  72  ~/myapp.py
+-'  68  0  ~/myapp.py
+-'  70  9  ~/myapp.py
 -'  2  12  ~/myapp.py
+-'  59  0  ~/myapp.py
+-'  69  7  ~/myapp.py
+-'  54  12  ~/myapp.py
+-'  67  7  ~/myapp.py
+-'  66  13  ~/myapp.py
+-'  57  0  ~/myapp.py
 -'  58  0  ~/myapp.py
--'  68  7  ~/myapp.py
--'  53  12  ~/myapp.py
--'  66  7  ~/myapp.py
 -'  65  13  ~/myapp.py
 -'  56  0  ~/myapp.py
--'  57  0  ~/myapp.py
--'  64  13  ~/myapp.py
--'  55  0  ~/myapp.py
+-'  61  0  ~/myapp.py
 -'  60  0  ~/myapp.py
--'  59  0  ~/myapp.py
 -'  1  0  ~/topology.xml
 -'  46  0  ~/topology.xml
 -'  9  0  ~/topology.xml
@@ -156,16 +157,13 @@
 -'  1  0  ~/read.py
 -'  3  35  ~/read.py
 -'  1  0  ~/read.py
--'  3  35  ~/read.py
 
 # History of marks within files (newest to oldest):
 
 > ~/myapp.py
-	"	49	0
-	^	45	33
-	.	45	29
-	+	23	4
-	+	16	30
+	"	24	97
+	^	24	98
+	.	24	97
 	+	21	0
 	+	16	0
 	+	17	0
@@ -192,7 +190,7 @@
 	+	18	0
 	+	8	0
 	+	23	52
-	+	26	33
+	+	27	33
 	+	17	0
 	+	20	0
 	+	21	0
@@ -200,70 +198,72 @@
 	+	17	0
 	+	14	2
 	+	22	2
-	+	29	22
-	+	33	0
-	+	29	35
-	+	27	26
-	+	29	24
-	+	27	0
-	+	29	15
+	+	30	22
+	+	34	0
+	+	30	35
+	+	28	26
+	+	30	24
+	+	28	0
+	+	30	15
 	+	8	29
 	+	24	54
-	+	27	0
 	+	28	0
 	+	29	0
+	+	30	0
 	+	24	55
-	+	27	0
 	+	28	0
 	+	29	0
-	+	35	36
-	+	37	88
-	+	39	11
-	+	38	0
-	+	39	6
+	+	30	0
+	+	36	36
+	+	38	88
+	+	40	11
+	+	39	0
+	+	40	6
 	+	6	15
-	+	33	14
-	+	29	27
-	+	33	8
+	+	34	14
+	+	30	27
+	+	34	8
 	+	6	20
-	+	33	21
-	+	35	33
-	+	40	2
-	+	33	0
+	+	34	21
+	+	36	33
+	+	41	2
+	+	34	0
 	+	11	0
 	+	8	36
 	+	12	0
-	+	30	44
-	+	29	0
-	+	31	1
-	+	32	20
-	+	30	16
-	+	27	0
-	+	30	56
-	+	27	0
-	+	32	28
-	+	50	0
-	+	36	2
-	+	40	0
-	+	39	82
-	+	40	12
-	+	39	63
-	+	32	0
-	+	37	0
+	+	31	44
+	+	30	0
+	+	32	1
+	+	33	20
+	+	31	16
+	+	28	0
+	+	31	56
+	+	28	0
+	+	33	28
+	+	51	0
+	+	37	2
+	+	41	0
+	+	40	82
+	+	41	12
+	+	40	63
+	+	33	0
 	+	38	0
-	+	40	31
-	+	42	0
-	+	46	0
-	+	43	21
-	+	44	35
-	+	45	34
-	+	43	19
-	+	44	33
-	+	45	32
-	+	44	29
+	+	39	0
+	+	41	31
+	+	43	0
+	+	47	0
+	+	44	21
+	+	45	35
+	+	46	34
+	+	44	19
+	+	45	33
+	+	46	32
 	+	45	29
-	+	44	29
+	+	46	29
 	+	45	29
+	+	46	29
+	+	28	0
+	+	24	97
 
 > ~/read.py
 	"	3	35

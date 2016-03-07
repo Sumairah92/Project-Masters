@@ -21,10 +21,11 @@ for node in obj.rspec.node:
                         print(interface.ip["address"])
 '''
 # Get switch and link information from the controller
+#maybe use curl http://128.163.232.72:8080/wm/core/switch/all/desc/json and other parameters check
 command = "curl -s http://%s/wm/core/controller/switches/json" % controllerIp
 result = os.popen(command).read()
 parsedResult = json.loads(result)
-#print parsedResult
+print parsedResult
 for result in parsedResult:
 #	print result['switchDPID']
 	Network.add_node(result['switchDPID'], address=result['inetAddress'])
