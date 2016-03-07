@@ -26,39 +26,42 @@
 
 # Registers:
 ""1	LINE	0
-	Network = nx.Graph()
+	#delete route
 "2	LINE	0
-	#build topology
+	Network = nx.Graph()
 "3	LINE	0
-		if node.interface is not None:
+	#build topology
 "4	LINE	0
-	    print(child)
+		if node.interface is not None:
 "5	LINE	0
-	for child in obj.rspec:
+	    print(child)
 "6	LINE	0
-	obj.rspec.link[0]["client_id"]
+	for child in obj.rspec:
 "7	LINE	0
-			if node:
+	obj.rspec.link[0]["client_id"]
 "8	LINE	0
-	#	obj.rspec.link[0]["interface"]
+			if node:
 "9	LINE	0
-		# to access an attribute called 'client_id'  of a first link element
+	#	obj.rspec.link[0]["interface"]
 "-	CHAR	0
 		
 
 # File marks:
-'0  1  0  ~/myapp.py
-'1  32  28  ~/myapp.py
-'2  27  0  ~/myapp.py
-'3  30  16  ~/myapp.py
-'4  33  21  ~/myapp.py
-'5  10  0  ~/myapp.py
-'6  39  11  ~/myapp.py
-'7  24  56  ~/myapp.py
-'8  29  0  ~/myapp.py
-'9  8  29  ~/myapp.py
+'0  3  35  ~/read.py
+'1  43  0  ~/myapp.py
+'2  1  0  ~/myapp.py
+'3  32  28  ~/myapp.py
+'4  27  0  ~/myapp.py
+'5  30  16  ~/myapp.py
+'6  33  21  ~/myapp.py
+'7  10  0  ~/myapp.py
+'8  39  11  ~/myapp.py
+'9  24  56  ~/myapp.py
 
 # Jumplist (newest first):
+-'  3  35  ~/read.py
+-'  1  0  ~/read.py
+-'  43  0  ~/myapp.py
 -'  1  0  ~/myapp.py
 -'  32  28  ~/myapp.py
 -'  27  0  ~/myapp.py
@@ -75,7 +78,6 @@
 -'  22  2  ~/myapp.py
 -'  44  12  ~/myapp.py
 -'  10  0  ~/read.py
--'  1  0  ~/read.py
 -'  11  34  ~/read.py
 -'  13  4  ~/read.py
 -'  8  0  ~/read.py
@@ -93,77 +95,110 @@
 -'  210  0  ~/topology.xml
 -'  4  30  ~/read.py
 -'  26  31  ~/myapp.py
--'  47  0  ~/myapp.py
--'  65  25  ~/myapp.py
--'  86  9  ~/myapp.py
--'  68  72  ~/myapp.py
--'  81  0  ~/myapp.py
--'  87  0  ~/myapp.py
--'  83  9  ~/myapp.py
--'  45  12  ~/myapp.py
--'  72  0  ~/myapp.py
--'  84  10  ~/myapp.py
--'  82  7  ~/myapp.py
--'  67  12  ~/myapp.py
--'  80  7  ~/myapp.py
--'  79  13  ~/myapp.py
--'  70  0  ~/myapp.py
--'  88  0  ~/myapp.py
+-'  46  0  ~/myapp.py
+-'  64  25  ~/myapp.py
+-'  85  9  ~/myapp.py
+-'  67  72  ~/myapp.py
+-'  80  0  ~/myapp.py
+-'  86  0  ~/myapp.py
+-'  82  9  ~/myapp.py
 -'  71  0  ~/myapp.py
--'  85  12  ~/myapp.py
+-'  83  10  ~/myapp.py
+-'  81  7  ~/myapp.py
 -'  66  12  ~/myapp.py
+-'  79  7  ~/myapp.py
 -'  78  13  ~/myapp.py
 -'  69  0  ~/myapp.py
--'  89  0  ~/myapp.py
--'  74  0  ~/myapp.py
--'  90  0  ~/myapp.py
+-'  87  0  ~/myapp.py
+-'  70  0  ~/myapp.py
+-'  84  12  ~/myapp.py
+-'  65  12  ~/myapp.py
+-'  77  13  ~/myapp.py
+-'  68  0  ~/myapp.py
+-'  88  0  ~/myapp.py
 -'  73  0  ~/myapp.py
+-'  89  0  ~/myapp.py
+-'  72  0  ~/myapp.py
 -'  4  0  ~/myapp.py
--'  46  25  ~/myapp.py
--'  49  72  ~/myapp.py
--'  62  0  ~/myapp.py
--'  64  9  ~/myapp.py
+-'  45  25  ~/myapp.py
+-'  48  72  ~/myapp.py
+-'  61  0  ~/myapp.py
+-'  63  9  ~/myapp.py
 -'  2  12  ~/myapp.py
--'  53  0  ~/myapp.py
--'  63  7  ~/myapp.py
--'  48  12  ~/myapp.py
--'  61  7  ~/myapp.py
--'  60  13  ~/myapp.py
--'  51  0  ~/myapp.py
 -'  52  0  ~/myapp.py
+-'  62  7  ~/myapp.py
+-'  47  12  ~/myapp.py
+-'  60  7  ~/myapp.py
 -'  59  13  ~/myapp.py
 -'  50  0  ~/myapp.py
--'  55  0  ~/myapp.py
+-'  51  0  ~/myapp.py
+-'  58  13  ~/myapp.py
+-'  49  0  ~/myapp.py
 -'  54  0  ~/myapp.py
--'  10  0  ~/read.py
--'  10  0  ~/read.py
--'  1  0  ~/read.py
--'  11  34  ~/read.py
--'  13  4  ~/read.py
--'  8  0  ~/read.py
+-'  53  0  ~/myapp.py
 -'  1  0  ~/topology.xml
--'  12  32  ~/read.py
 -'  46  0  ~/topology.xml
--'  14  1  ~/read.py
 -'  9  0  ~/topology.xml
 -'  130  15  ~/topology.xml
--'  6  0  ~/read.py
 -'  23  0  ~/topology.xml
--'  2  0  ~/read.py
 -'  210  0  ~/topology.xml
--'  4  30  ~/read.py
--'  10  0  ~/read.py
--'  1  0  ~/read.py
--'  11  34  ~/read.py
--'  13  4  ~/read.py
 
 # History of marks within files (newest to oldest):
 
+> ~/read.py
+	"	3	35
+	^	3	36
+	.	3	35
+	+	15	0
+	+	4	30
+	+	5	32
+	+	6	0
+	+	6	0
+	+	7	15
+	+	14	23
+	+	8	22
+	+	14	0
+	+	8	6
+	+	14	9
+	+	8	8
+	+	14	22
+	+	12	30
+	+	9	25
+	+	14	2
+	+	11	33
+	+	12	31
+	+	11	34
+	+	11	50
+	+	12	33
+	+	13	33
+	+	2	0
+	+	5	0
+	+	6	0
+	+	9	9
+	+	9	2
+	+	11	2
+	+	11	38
+	+	12	4
+	+	13	4
+	+	9	2
+	+	11	2
+	+	11	37
+	+	12	3
+	+	13	4
+	+	11	67
+	+	10	19
+	+	11	2
+	+	12	0
+	+	10	21
+	+	11	0
+	+	10	19
+	+	3	35
+	a	3	0
+
 > ~/myapp.py
-	"	1	0
+	"	43	0
 	^	32	29
-	.	32	28
-	+	44	12
+	.	44	0
 	+	24	53
 	+	1	8
 	+	26	34
@@ -263,54 +298,7 @@
 	+	30	56
 	+	27	0
 	+	32	28
-
-> ~/read.py
-	"	10	0
-	^	10	19
-	.	10	19
-	+	15	0
-	+	4	30
-	+	5	32
-	+	6	0
-	+	6	0
-	+	7	15
-	+	14	23
-	+	8	22
-	+	14	0
-	+	8	6
-	+	14	9
-	+	8	8
-	+	14	22
-	+	12	30
-	+	9	25
-	+	14	2
-	+	11	33
-	+	12	31
-	+	11	34
-	+	11	50
-	+	12	33
-	+	13	33
-	+	2	0
-	+	5	0
-	+	6	0
-	+	9	9
-	+	9	2
-	+	11	2
-	+	11	38
-	+	12	4
-	+	13	4
-	+	9	2
-	+	11	2
-	+	11	37
-	+	12	3
-	+	13	4
-	+	11	67
-	+	10	19
-	+	11	2
-	+	12	0
-	+	10	21
-	+	11	0
-	+	10	19
+	+	44	0
 
 > ~/topology.xml
 	"	1	0
