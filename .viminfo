@@ -12,15 +12,22 @@
 
 # Command Line History (newest to oldest):
 :wq!
-:50
+:77
+:78
+:75
 :70
+:66
+:q!
+:73
+:60
+:56
+:59
+:50
+:62
+:.,.+6162
 :95
 :51
-:77
-:66
 :55
-:60
-:q!
 :65
 :85
 :83
@@ -39,158 +46,167 @@
 
 # Registers:
 ""1	CHAR	0
-	for d in dpids:
-		if parsedResult[d]['desc']['datapathDescription'] = 
+	#Network.add_edges_from(edges)
 	
 	
 "2	CHAR	0
-	command = "curl -s http://%s//wm/core/switch/all/desc/json" % controllerIp
-	result = os.popen(command).read()
-	parsedResult = json.loads(result)
-	#print parsedResult['00:00:1a:42:c2:ca:43:49']['desc']['datapathDescription']
-	f
+			edges.append(e1 + "," + e2)
+	
 "3	CHAR	0
-	''witch and link information from the controller
-	command = "curl -s http://%s/wm/core/controller/switches/json" % controllerIp
-	result = os.popen(command).read()
-	parsedResult = json.loads(result)
-	for result in parsedResult:
-	        d = result['switchDPID']
-	        dpids.append(d)
-	#print dpids
+	#Network.node['s1']['DPIP'] = 'x:00:00:00:00'
+	
 "4	CHAR	0
-	
-	# Get switch and link information from the controller
-	command = "curl -s http://%s/wm/core/controller/switches/json" % controllerIp
-	result = os.popen(command).read()
-	parsedResult = json.loads(result)
-	for result in parsedResult:
-		d = result['switchDPID']
-		dpids.append(d)
-	#print dpids
-	
-	
+	print edges
+		
 "5	CHAR	0
-	#for i,x in enumerate(parsedResult):
-	print parsedResult
-	#['datapathDescription']
+	#print Network.node['s1']['interfaces'][0]['IP']
+	#print Network.nodes(data=True)
+	
+	'''e=('s1','s2')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s2','s3')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s3','s1')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s1','h1')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s2','h2')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s3','h3')
+	edges.append(e)
 	
 "6	LINE	0
-	    Network.add_node(result['switchDPID'], address=result['inetAddress'])
+	#Network.node['s1']['DPIP'] = 'x:00:00:00:00'
 	#print Network.nodes(data=True)
 "7	CHAR	0
-	#maybe use curl http://128.163.232.72:8080/wm/core/switch/all/desc/json and other parameters check
-	c
+	#print Network.node['s1']['interfaces'][0]['IP']
+	#print Network.nodes(data=True)
+	
+	'''e=('s1','s2')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s2','s3')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s3','s1')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s1','h1')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s2','h2')
+	edges.append(e)
+	#Network.add_edge(*e)
+	e=('s3','h3')
+	edges.append(e)
+	
 "8	CHAR	0
-	for nodes in Network.nodes(data=True):
-		print nodes[1].IP
+		print node["client_id"]
+		print count
 	
 "9	CHAR	0
-	
-	
-	
-	
-	
-	
+	interfaces = list()
+	links = list()
 	
 "-	CHAR	0
 	'
 
 # File marks:
-'0  94  0  ~/myapp.py
-'1  12  0  ~/myapp.py
-'2  59  0  ~/myapp.py
-'3  8  30  ~/myapp.py
-'4  15  0  ~/myapp.py
-'5  51  61  ~/myapp.py
-'6  57  85  ~/myapp.py
-'7  80  52  ~/myapp.py
-'8  80  0  ~/myapp.py
-'9  81  0  ~/myapp.py
+'0  3  7  ~/myapp.py
+'1  75  63  ~/myapp.py
+'2  10  29  ~/myapp.py
+'3  210  7  ~/topology.xml
+'4  1  0  ~/myapp.py
+'5  76  13  ~/myapp.py
+'6  74  18  ~/myapp.py
+'7  78  14  ~/myapp.py
+'8  484  7  ~/topology.xml
+'9  51  8  ~/myapp.py
 
 # Jumplist (newest first):
--'  94  0  ~/myapp.py
+-'  3  7  ~/myapp.py
 -'  1  0  ~/myapp.py
--'  12  0  ~/myapp.py
--'  59  0  ~/myapp.py
--'  8  30  ~/myapp.py
+-'  75  63  ~/myapp.py
+-'  10  29  ~/myapp.py
+-'  210  7  ~/topology.xml
+-'  1  0  ~/topology.xml
+-'  76  13  ~/myapp.py
+-'  74  18  ~/myapp.py
+-'  78  14  ~/myapp.py
+-'  484  7  ~/topology.xml
+-'  51  8  ~/myapp.py
+-'  747  7  ~/topology.xml
+-'  92  0  ~/myapp.py
+-'  73  24  ~/myapp.py
+-'  84  2  ~/myapp.py
+-'  72  9  ~/myapp.py
+-'  67  49  ~/myapp.py
+-'  58  14  ~/myapp.py
+-'  60  23  ~/myapp.py
+-'  776  0  ~/topology.xml
 -'  15  0  ~/myapp.py
--'  51  61  ~/myapp.py
--'  57  85  ~/myapp.py
--'  20  13  ~/myapp.py
--'  80  0  ~/myapp.py
--'  81  0  ~/myapp.py
--'  75  17  ~/myapp.py
--'  76  0  ~/myapp.py
--'  62  0  ~/myapp.py
--'  45  33  ~/myapp.py
--'  60  38  ~/myapp.py
--'  38  35  ~/myapp.py
--'  40  0  ~/myapp.py
--'  37  16  ~/myapp.py
--'  36  29  ~/myapp.py
+-'  63  0  ~/myapp.py
+-'  18  0  ~/myapp.py
+-'  54  61  ~/myapp.py
+-'  61  85  ~/myapp.py
+-'  23  13  ~/myapp.py
+-'  48  33  ~/myapp.py
+-'  64  38  ~/myapp.py
+-'  39  35  ~/myapp.py
+-'  41  0  ~/myapp.py
+-'  38  16  ~/myapp.py
+-'  37  29  ~/myapp.py
 -'  3  35  ~/read.py
 -'  1  0  ~/read.py
 -'  10  0  ~/read.py
 -'  11  34  ~/read.py
 -'  13  4  ~/read.py
 -'  8  0  ~/read.py
--'  1  0  ~/topology.xml
 -'  12  32  ~/read.py
--'  46  0  ~/topology.xml
+-'  792  0  ~/topology.xml
 -'  14  1  ~/read.py
--'  9  0  ~/topology.xml
--'  130  15  ~/topology.xml
+-'  755  0  ~/topology.xml
+-'  876  15  ~/topology.xml
 -'  6  0  ~/read.py
--'  23  0  ~/topology.xml
+-'  769  0  ~/topology.xml
 -'  2  0  ~/read.py
--'  210  0  ~/topology.xml
+-'  956  0  ~/topology.xml
 -'  4  30  ~/read.py
+-'  90  25  ~/myapp.py
+-'  111  9  ~/myapp.py
+-'  93  72  ~/myapp.py
+-'  106  0  ~/myapp.py
+-'  112  0  ~/myapp.py
+-'  108  9  ~/myapp.py
+-'  97  0  ~/myapp.py
+-'  109  10  ~/myapp.py
+-'  107  7  ~/myapp.py
+-'  105  7  ~/myapp.py
+-'  104  13  ~/myapp.py
+-'  95  0  ~/myapp.py
+-'  113  0  ~/myapp.py
 -'  96  0  ~/myapp.py
--'  114  25  ~/myapp.py
--'  135  9  ~/myapp.py
--'  117  72  ~/myapp.py
--'  130  0  ~/myapp.py
--'  136  0  ~/myapp.py
--'  132  9  ~/myapp.py
--'  121  0  ~/myapp.py
--'  133  10  ~/myapp.py
--'  131  7  ~/myapp.py
--'  116  12  ~/myapp.py
--'  129  7  ~/myapp.py
--'  128  13  ~/myapp.py
--'  119  0  ~/myapp.py
--'  137  0  ~/myapp.py
--'  120  0  ~/myapp.py
--'  134  12  ~/myapp.py
--'  115  12  ~/myapp.py
--'  127  13  ~/myapp.py
--'  118  0  ~/myapp.py
--'  138  0  ~/myapp.py
--'  123  0  ~/myapp.py
--'  139  0  ~/myapp.py
--'  122  0  ~/myapp.py
--'  95  25  ~/myapp.py
--'  98  72  ~/myapp.py
--'  111  0  ~/myapp.py
--'  113  9  ~/myapp.py
--'  102  0  ~/myapp.py
--'  112  7  ~/myapp.py
--'  97  12  ~/myapp.py
--'  110  7  ~/myapp.py
--'  109  13  ~/myapp.py
--'  100  0  ~/myapp.py
--'  101  0  ~/myapp.py
--'  108  13  ~/myapp.py
+-'  110  12  ~/myapp.py
+-'  91  12  ~/myapp.py
+-'  103  13  ~/myapp.py
+-'  94  0  ~/myapp.py
+-'  114  0  ~/myapp.py
 -'  99  0  ~/myapp.py
--'  104  0  ~/myapp.py
--'  103  0  ~/myapp.py
--'  1  0  ~/topology.xml
--'  46  0  ~/topology.xml
--'  9  0  ~/topology.xml
--'  130  15  ~/topology.xml
--'  23  0  ~/topology.xml
--'  210  0  ~/topology.xml
+-'  115  0  ~/myapp.py
+-'  98  0  ~/myapp.py
+-'  87  0  ~/myapp.py
+-'  89  9  ~/myapp.py
+-'  88  7  ~/myapp.py
+-'  86  7  ~/myapp.py
+-'  85  13  ~/myapp.py
+-'  77  0  ~/myapp.py
+-'  80  0  ~/myapp.py
+-'  79  0  ~/myapp.py
 -'  3  35  ~/read.py
 -'  1  0  ~/read.py
 -'  3  35  ~/read.py
@@ -200,118 +216,129 @@
 -'  3  35  ~/read.py
 -'  1  0  ~/read.py
 -'  10  0  ~/read.py
--'  11  34  ~/read.py
--'  13  4  ~/read.py
--'  8  0  ~/read.py
+-'  473  7  ~/topology.xml
+-'  210  7  ~/topology.xml
 -'  1  0  ~/topology.xml
--'  93  2  ~/myapp.py
+-'  210  7  ~/topology.xml
+-'  1  0  ~/topology.xml
+-'  210  7  ~/topology.xml
+-'  1  0  ~/topology.xml
 
 # History of marks within files (newest to oldest):
 
 > ~/myapp.py
-	"	94	0
-	^	9	14
-	.	8	16
-	+	44	53
-	+	45	29
-	+	48	26
-	+	60	2
-	+	62	0
-	+	61	0
-	+	63	0
-	+	29	56
-	+	61	0
-	+	62	2
-	+	74	3
-	+	75	44
-	+	76	29
+	"	3	7
+	^	10	30
+	.	75	63
+	+	74	0
+	+	74	0
+	+	74	31
+	+	74	14
+	+	74	0
+	+	74	2
+	+	74	13
+	+	74	14
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	29
+	+	74	68
+	+	74	12
+	+	74	0
+	+	74	2
+	+	74	0
+	+	74	0
+	+	12	13
+	+	35	0
+	+	14	14
+	+	8	18
+	+	15	0
+	+	74	45
+	+	43	10
+	+	45	12
+	+	60	11
+	+	74	0
+	+	60	0
+	+	60	23
+	+	59	19
+	+	61	56
+	+	59	10
+	+	74	0
+	+	58	14
+	+	74	0
+	+	73	40
+	+	67	30
+	+	73	1
+	+	67	16
+	+	66	63
+	+	67	51
+	+	73	0
+	+	70	51
+	+	69	10
+	+	71	50
+	+	67	52
+	+	68	9
+	+	71	111
+	+	73	0
+	+	68	25
+	+	71	91
+	+	73	1
+	+	68	12
+	+	71	72
+	+	72	10
+	+	73	20
+	+	73	10
+	+	73	25
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	31
+	+	74	0
+	+	92	2
+	+	84	2
+	+	74	0
+	+	74	0
+	+	73	24
+	+	74	0
+	+	74	31
+	+	75	67
+	+	74	94
+	+	74	31
+	+	75	67
+	+	10	29
+	+	74	31
+	+	75	67
 	+	75	0
-	+	75	19
-	+	75	27
+	+	75	67
+	+	74	18
+	+	10	27
+	+	74	0
+	+	75	67
+	+	75	67
 	+	76	0
-	+	75	28
-	+	75	23
-	+	75	10
-	+	75	12
-	+	75	37
-	+	75	12
-	+	75	9
-	+	75	24
-	+	75	49
-	+	75	15
-	+	75	36
-	+	75	18
-	+	76	0
-	+	80	0
-	+	80	52
-	+	80	0
-	+	80	0
-	+	80	0
-	+	80	0
-	+	94	0
-	+	89	2
-	+	94	2
-	+	80	20
-	+	80	36
-	+	80	21
-	+	80	66
-	+	80	33
-	+	80	43
-	+	80	0
-	+	80	36
-	+	80	18
-	+	80	0
-	+	80	18
-	+	80	66
-	+	80	18
-	+	80	51
-	+	80	0
-	+	80	0
-	+	80	0
-	+	80	0
-	+	80	10
-	+	32	27
-	+	80	12
-	+	80	24
-	+	80	15
-	+	80	74
-	+	80	33
-	+	80	4
-	+	80	102
-	+	80	16
-	+	80	7
-	+	80	0
-	+	80	15
-	+	80	78
-	+	80	2
-	+	80	76
-	+	80	0
-	+	80	76
-	+	80	0
-	+	80	20
-	+	80	0
-	+	80	52
-	+	22	0
-	+	80	0
-	+	95	0
-	+	95	0
-	+	24	74
-	+	26	33
-	+	33	0
-	+	9	14
-	+	80	0
-	+	80	0
-	+	81	0
-	+	51	80
-	+	52	9
-	+	55	13
-	+	57	85
-	+	51	61
-	+	94	2
-	+	61	0
-	+	59	9
-	+	22	0
-	+	8	16
+	+	75	50
+	+	76	14
+	+	10	16
+	+	75	63
+
+> ~/topology.xml
+	"	210	7
+	^	210	8
+	.	210	0
+	+	956	0
+	+	747	0
+	+	484	0
+	+	210	0
 
 > ~/read.py
 	"	3	35
@@ -362,9 +389,3 @@
 	+	10	19
 	+	3	35
 	a	3	0
-
-> ~/topology.xml
-	"	1	0
-	^	210	8
-	.	210	0
-	+	210	0

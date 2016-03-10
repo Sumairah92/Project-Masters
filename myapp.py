@@ -5,10 +5,13 @@ import time
 import untangle
 import networkx as nx
 
+#Declare variables
+
 controllerIp = '128.163.232.72:8080'
 dpids = list()
-
-#build topology
+edges = list()
+interfaces = list()
+links = list()
 Network = nx.Graph()
 
 
@@ -28,8 +31,6 @@ parsedResult = json.loads(result)
 
 #parse rspec and get topology information from controller
 
-interfaces = list()
-links = list()
 obj = untangle.parse("topology.xml")
 for link in obj.rspec.link:
 	for interface in link.interface_ref:
@@ -39,7 +40,9 @@ for link in obj.rspec.link:
 for node in obj.rspec.node:
 	if node["client_id"]<>'GDGN0' and node["client_id"]<>'AAGCTRL0':
         	Network.add_node(node["client_id"])
+		count = 0
         	for interface in node.interface:
+			count += 1
 			for i,x in enumerate(links):
         			if x["interface"] == interface["client_id"]:
                 			thisLink = x["name"]
@@ -52,30 +55,25 @@ for node in obj.rspec.node:
 				dp = d
     	host = { 'name' : node["client_id"],
         	 'interfaces' : interfaces,
-		 'DPID' : dp}
+		 'DPID' : dp,
+		 'linkNum' : count}
 
-    	Network.add_node(host['name'], interfaces=host['interfaces'], DPID = host['DPID'])
+    	Network.add_node(host['name'], linkNum=host['linkNum'], interfaces=host['interfaces'], DPID = host['DPID'])
     	interfaces= []
 	dp = None
 
-print Network.nodes(data=True)
-'''e=('s1','s2')
-Network.add_edge(*e)
-e=('s2','s3')
-Network.add_edge(*e)
-e=('s3','s1')
-Network.add_edge(*e)
-e=('s1','h1')
-Network.add_edge(*e)
-e=('s2','h2')
-Network.add_edge(*e)
-e=('s3','h3')
-Network.add_edge(*e)
-'''
-#Network.node['s1']['DPIP'] = 'x:00:00:00:00'
-#print Network.nodes(data=True)
-#for path in nx.all_simple_paths(Network, source='s1', target='h1'):
-#    print (path)
+for nodes in Network.nodes():
+	for i,interface in enumerate(Network.node[nodes]['interfaces']):
+		L1 =  Network.node[nodes]['interfaces'][i]['link']
+		e1 = nodes
+		for nodes2 in Network.nodes():
+			for i2,interface2 in enumerate(Network.node[nodes2]['interfaces']):
+				if (Network.node[nodes2]['interfaces'][i2]['link']== L1) and (nodes2 <> e1):
+					e2 = nodes2
+		Network.add_edge(e1,e2)
+#print Network.edges(data=True)
+for path in nx.all_simple_paths(Network, source='h2', target='h3'):
+    print path
 
 #get statistics
 
@@ -83,10 +81,10 @@ Network.add_edge(*e)
 
 #command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
 #os.popen(command).read()
-command = "curl http://%s/wm/statistics/bandwidth/\"all\"/\"all\"/json" % controllerIp
+'''command = "curl http://%s/wm/statistics/bandwidth/\"all\"/\"all\"/json" % controllerIp
 result=os.popen(command).read()
 parsedResult = json.loads(result)
-'''for result in parsedResult:
+for result in parsedResult:
     print "DPID: %s" % result['dpid']
     print "bits-per-second-rx: %s" % result['bits-per-second-rx']
     print "bits-per-second-tx: %s" %result['bits-per-second-tx']
