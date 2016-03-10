@@ -3,6 +3,7 @@ import json
 import io
 import time
 import untangle
+import time
 import networkx as nx
 
 #Declare variables
@@ -72,21 +73,27 @@ for nodes in Network.nodes():
 					e2 = nodes2
 		Network.add_edge(e1,e2)
 #print Network.edges(data=True)
-for path in nx.all_simple_paths(Network, source='h2', target='h3'):
-    print path
+#for path in nx.all_simple_paths(Network, source='h2', target='h3'):
+#    print path
+print "Topology created"
 
 #get statistics
-
+print "Preparing for querying statistics"
+time.sleep(5)
 #enable statistics in the switches
 
-#command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
-#os.popen(command).read()
-'''command = "curl http://%s/wm/statistics/bandwidth/\"all\"/\"all\"/json" % controllerIp
-result=os.popen(command).read()
-parsedResult = json.loads(result)
-for result in parsedResult:
-    print "DPID: %s" % result['dpid']
-    print "bits-per-second-rx: %s" % result['bits-per-second-rx']
-    print "bits-per-second-tx: %s" %result['bits-per-second-tx']
+command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
+os.popen(command).read()
+while True:
+	command = "curl http://%s/wm/statistics/bandwidth/\"all\"/\"all\"/json" % controllerIp
+	result=os.popen(command).read()
+	parsedResult = json.loads(result)
+	#for result in parsedResult:
+    	#	print "DPID: %s" % result['dpid']
+    	#	print "bits-per-second-rx: %s" % result['bits-per-second-rx']
+    	#	print "bits-per-second-tx: %s" %result['bits-per-second-tx']
+	time.sleep(10)
+
 #add route
-'''
+
+
