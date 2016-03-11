@@ -4,6 +4,7 @@ import io
 import time
 import untangle
 import time
+import re
 import networkx as nx
 
 #Declare variables
@@ -47,8 +48,10 @@ for node in obj.rspec.node:
 			for i,x in enumerate(links):
         			if x["interface"] == interface["client_id"]:
                 			thisLink = x["name"]
+			mac= re.sub(r'(.{2})(?!$)', r'\1:',interface["mac_address"])
             		I = { 'name' : interface["client_id"],
                   		'IP' : interface.ip["address"],
+			       'MAC' : mac,
 			       'link' : thisLink}
             		interfaces.append(I)
 		for d in dpids:
@@ -72,12 +75,13 @@ for nodes in Network.nodes():
 				if (Network.node[nodes2]['interfaces'][i2]['link']== L1) and (nodes2 <> e1):
 					e2 = nodes2
 		Network.add_edge(e1,e2)
-#print Network.edges(data=True)
-#for path in nx.all_simple_paths(Network, source='h2', target='h3'):
-#    print path
+print Network.nodes(data=True)
+for path in nx.all_simple_paths(Network, source='h2', target='h3'):
+    print path
 print "Topology created"
 
 #get statistics
+'''
 print "Preparing for querying statistics"
 time.sleep(5)
 #enable statistics in the switches
@@ -96,4 +100,4 @@ while True:
 
 #add route
 
-
+'''
