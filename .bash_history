@@ -273,3 +273,92 @@ git commit -m "Mar 6"
 git push origin master
 clear
 exit
+curl http://128.163.232.72:8080/wm/core/switch/all/desc/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/all/aggregate/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/all/flow/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/all/group/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/all/flow/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/all/port/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/all/desc/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/desc/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/flow/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/port/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/table/json
+curl http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/"table"/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/features/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/table/json
+clear
+curl http://128.163.232.72:8080/wm/query/traffic/json
+curl http://128.163.232.72:8080/wm/query/traffic/all/json
+clear
+curl -s http://128.163.232.72:8080/wm/core/counter/00:00:1a:42:c2:ca:43:49/json
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+git status
+git add .
+git commit -m "time"
+git push origin master
+clear
+vi myapp.py 
+curl -s http://128.163.232.72:8080/wm/core/counter/00:00:1a:42:c2:ca:43:49/json
+clear
+curl -s http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/desc/json
+clear
+curl -s http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/flow/json
+clear
+vi to
+vi topology.xml 
+curl -s http://128.163.232.72:8080/wm/core/switch/00:00:1a:42:c2:ca:43:49/flow/json
+clear
+curl -s http://128.163.232.72:8080/wm/core/switch/all/desc/json
+clear
+curl -s http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/flow/json
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+clear
+git status
+git add .
+git commit -m "Formatting MAC"
+git push origin master
+clear
+exit

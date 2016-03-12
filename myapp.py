@@ -15,9 +15,14 @@ edges = list()
 interfaces = list()
 links = list()
 Network = nx.Graph()
-
+Bandwidth_t1 = dict()
+Bandwidth_t2 = dict()
+BandwidthUsage = dict()
 
 # Get switch and link information from the controller
+
+#-----Get all DPIDs-------#
+
 command = "curl -s http://%s/wm/core/controller/switches/json" % controllerIp
 result = os.popen(command).read()
 parsedResult = json.loads(result)
@@ -25,11 +30,17 @@ for result in parsedResult:
         d = result['switchDPID']
         dpids.append(d)
 
+#------- Get node names to link with DPIDs------#
 
-command = "curl -s http://%s//wm/core/switch/all/desc/json" % controllerIp
+command = "curl -s http://%s/wm/core/switch/all/desc/json" % controllerIp
 result = os.popen(command).read()
-parsedResult = json.loads(result)
+parsedResultName = json.loads(result)
 
+#-------Get Port information for switch interfaces------#
+
+command = "curl -s http://%s/wm/core/switch/all/features/json" % controllerIp
+result = os.popen(command).read()
+parsedResultPorts = json.loads(result)
 
 #parse rspec and get topology information from controller
 
@@ -49,13 +60,18 @@ for node in obj.rspec.node:
         			if x["interface"] == interface["client_id"]:
                 			thisLink = x["name"]
 			mac= re.sub(r'(.{2})(?!$)', r'\1:',interface["mac_address"])
+			for d in dpids:
+        			for i,p in enumerate(parsedResultPorts[d]["portDesc"]):
+                			if (parsedResultPorts[d]["portDesc"][i]['hardwareAddress']) == mac:
+						port=parsedResultPorts[d]["portDesc"][i]['portNumber']
             		I = { 'name' : interface["client_id"],
                   		'IP' : interface.ip["address"],
 			       'MAC' : mac,
-			       'link' : thisLink}
+			       'link' : thisLink,
+			       'Port' : port}
             		interfaces.append(I)
 		for d in dpids:
-        		if parsedResult[d]['desc']['datapathDescription'] == node["client_id"]:
+        		if parsedResultName[d]['desc']['datapathDescription'] == node["client_id"]:
 				dp = d
     	host = { 'name' : node["client_id"],
         	 'interfaces' : interfaces,
@@ -75,29 +91,62 @@ for nodes in Network.nodes():
 				if (Network.node[nodes2]['interfaces'][i2]['link']== L1) and (nodes2 <> e1):
 					e2 = nodes2
 		Network.add_edge(e1,e2)
-print Network.nodes(data=True)
-for path in nx.all_simple_paths(Network, source='h2', target='h3'):
-    print path
+
+#print Network.nodes(data=True)
+
+#for path in nx.all_simple_paths(Network, source='h2', target='h3'):
+#    print path
 print "Topology created"
 
 #get statistics
-'''
+
 print "Preparing for querying statistics"
 time.sleep(5)
-#enable statistics in the switches
+
+#------enable statistics in the switches---#
 
 command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
 os.popen(command).read()
-while True:
-	command = "curl http://%s/wm/statistics/bandwidth/\"all\"/\"all\"/json" % controllerIp
-	result=os.popen(command).read()
-	parsedResult = json.loads(result)
-	#for result in parsedResult:
-    	#	print "DPID: %s" % result['dpid']
-    	#	print "bits-per-second-rx: %s" % result['bits-per-second-rx']
-    	#	print "bits-per-second-tx: %s" %result['bits-per-second-tx']
-	time.sleep(10)
 
+while True:
+
+#----------Query for stats at t1----------#
+
+        for nodes in Network.nodes():
+		if Network.node[nodes]['DPID'] is not None:
+        		for i,interface in enumerate(Network.node[nodes]['interfaces']):
+                		P =  Network.node[nodes]['interfaces'][i]['Port']
+				if P <> 'local':
+                			command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
+                			result=os.popen(command).read()
+                			parsedResult = json.loads(result)
+                			for result in parsedResult:
+						Bandwidth_t1[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
+	
+	time.sleep(10)
+#----------Query for stats at t2----------#
+
+	for nodes in Network.nodes():
+        	if Network.node[nodes]['DPID'] is not None:
+                	for i,interface in enumerate(Network.node[nodes]['interfaces']):
+                        	P =  Network.node[nodes]['interfaces'][i]['Port']
+                        	if P <> 'local':
+                                        command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
+                                        result=os.popen(command).read()
+                                        parsedResult = json.loads(result)
+                                        for result in parsedResult:
+						Bandwidth_t2[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
+
+#----------Calculate Bandwidth Difference----------#
+
+	for nodes in Network.nodes():
+                if Network.node[nodes]['DPID'] is not None:
+                        for i,interface in enumerate(Network.node[nodes]['interfaces']):
+                                P =  Network.node[nodes]['interfaces'][i]['Port']
+                                if P <> 'local':
+                                	BandwidthUsage[Network.node[nodes]['DPID']+P] = Bandwidth_t2[Network.node[nodes]['DPID']+P] - Bandwidth_t1[Network.node[nodes]['DPID']+P]
+
+	print BandwidthUsage	
 #add route
 
-'''
+
