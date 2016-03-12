@@ -12,6 +12,16 @@
 
 # Command Line History (newest to oldest):
 :wq!
+:155
+:157
+:145
+:152
+:146
+:wq
+:100
+:147
+:q!
+:1
 :130
 :132
 :s
@@ -19,15 +29,11 @@
 :161
 :94
 :98
-:100
 :50
 :w!
 :133
-:q!
 :160
 :140
-:152
-:145
 :148
 :125
 :120
@@ -55,8 +61,6 @@
 :51
 :55
 :65
-:85
-:83
 
 # Search String History (newest to oldest):
 ? \<result\>
@@ -72,9 +76,41 @@
 
 # Registers:
 ""1	CHAR	0
-						print command
+		print "node interface:%s",interface
 	
 "2	CHAR	0
+	for path in nx.all_simple_paths(Network, source='h2', target='h3'):
+		if path not in nx.shortest_path(Network, source='h2', target='h3')
+	    		sendPath = path
+	 
+"3	CHAR	0
+		for nodes in Network.nodes():
+	        	for i,interface in enumerate(Network.node[nodes]['interfaces']):
+	                	L1 =  Network.node[nodes]['interfaces'][i]['link']
+	                	e1 = nodes
+	                	for nodes2 in Network.nodes():
+	                        	for i2,interface2 in enumerate(Network.node[nodes2]['interfaces']):
+	                                	if (Network.node[nodes2]['interfaces'][i2]['link']== L1) and (nodes2 <> e1):
+	                                        	e2 = nodes2
+	                                        	if "s" in nodes2 and "s" in nodes:
+	                                                	interswitchLinks.append(L1)
+	                	Network.add_edge(e1,e2)
+	
+	
+"4	CHAR	0
+	def generate_rule_for_path(path,sourceIP,destIP):
+			
+	
+	
+	
+	
+"5	CHAR	0
+	
+	#
+"6	CHAR	0
+						print command
+	
+"7	CHAR	0
 	'''for nodes in Network.nodes():
 		for i,interface in enumerate(Network.node[nodes]['interfaces']):
 			L1 =  nodes,Network.node[nodes]['interfaces'][i]['link']
@@ -87,7 +123,7 @@
 						print nodes2
 	'''
 		
-"3	CHAR	0
+"8	CHAR	0
 	'''
 	while True:
 		for d in dpids:
@@ -103,113 +139,118 @@
 	'''
 	
 	
-"4	CHAR	0
+"9	CHAR	0
 	  command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
 	                                        result=os.popen(command).read()
 	                                        parsedResult = json.loads(result)
 	                                        for result in parsedResult:
 	
-"5	CHAR	0
-	#	Bandwidth=Bandwidth_t2 - Bandwidth_t1
-		print Bandwidth_t1.values()
-	
-"6	CHAR	0
-		print Bandwidth_t2
-	
-"7	CHAR	0
-	#	print Bandwidth_t1
-	
-"8	LINE	0
-		print Bandwidth_t2
-	#add route
-"9	LINE	0
-	#	print Bandwidth_t1
-		time.sleep(10)
 "-	CHAR	0
 	i
 
 # File marks:
-'0  1  0  ~/myapp.py
-'1  135  0  ~/myapp.py
-'2  134  15  ~/myapp.py
-'3  127  149  ~/myapp.py
-'4  126  63  ~/myapp.py
-'5  126  69  ~/myapp.py
-'6  163  2  ~/myapp.py
-'7  99  21  ~/myapp.py
-'8  98  32  ~/myapp.py
-'9  95  65  ~/myapp.py
+'0  155  0  ~/myapp.py
+'1  145  14  ~/myapp.py
+'2  148  22  ~/myapp.py
+'3  159  2  ~/myapp.py
+'4  157  5  ~/myapp.py
+'5  152  47  ~/myapp.py
+'6  143  58  ~/myapp.py
+'7  159  19  ~/myapp.py
+'8  154  80  ~/myapp.py
+'9  158  20  ~/myapp.py
 
 # Jumplist (newest first):
+-'  155  0  ~/myapp.py
 -'  1  0  ~/myapp.py
--'  135  0  ~/myapp.py
--'  134  15  ~/myapp.py
--'  127  149  ~/myapp.py
--'  126  63  ~/myapp.py
--'  163  2  ~/myapp.py
--'  99  21  ~/myapp.py
--'  98  32  ~/myapp.py
--'  95  65  ~/myapp.py
--'  94  28  ~/myapp.py
--'  101  3  ~/myapp.py
--'  96  45  ~/myapp.py
--'  100  0  ~/myapp.py
--'  161  0  ~/myapp.py
--'  132  55  ~/myapp.py
--'  159  138  ~/myapp.py
--'  133  12  ~/myapp.py
--'  160  15  ~/myapp.py
--'  150  27  ~/myapp.py
--'  147  0  ~/myapp.py
--'  128  49  ~/myapp.py
--'  146  5  ~/myapp.py
+-'  145  14  ~/myapp.py
+-'  148  22  ~/myapp.py
+-'  159  2  ~/myapp.py
+-'  157  5  ~/myapp.py
+-'  152  47  ~/myapp.py
+-'  143  58  ~/myapp.py
+-'  154  80  ~/myapp.py
+-'  158  20  ~/myapp.py
+-'  156  33  ~/myapp.py
+-'  149  17  ~/myapp.py
+-'  167  24  ~/myapp.py
+-'  146  31  ~/myapp.py
+-'  180  2  ~/myapp.py
+-'  181  0  ~/myapp.py
+-'  240  20  ~/myapp.py
+-'  64  34  ~/myapp.py
+-'  60  3  ~/myapp.py
+-'  22  0  ~/path.py
+-'  1  0  ~/path.py
+-'  188  7  ~/myapp.py
+-'  211  0  ~/myapp.py
+-'  210  15  ~/myapp.py
+-'  203  149  ~/myapp.py
+-'  202  63  ~/myapp.py
+-'  239  2  ~/myapp.py
+-'  136  21  ~/myapp.py
+-'  135  32  ~/myapp.py
+-'  132  65  ~/myapp.py
+-'  131  28  ~/myapp.py
+-'  138  3  ~/myapp.py
+-'  133  45  ~/myapp.py
+-'  137  0  ~/myapp.py
+-'  237  0  ~/myapp.py
+-'  208  55  ~/myapp.py
+-'  235  138  ~/myapp.py
+-'  209  12  ~/myapp.py
+-'  236  15  ~/myapp.py
+-'  226  27  ~/myapp.py
+-'  223  0  ~/myapp.py
+-'  204  49  ~/myapp.py
+-'  222  5  ~/myapp.py
 -'  2  0  ~/myapp.py
 -'  1  0  ~/test.py
 -'  1  0  ~/t
--'  130  44  ~/myapp.py
+-'  206  44  ~/myapp.py
 -'  27  0  ~/test.py
 -'  26  49  ~/test.py
 -'  22  23  ~/test.py
--'  149  0  ~/myapp.py
--'  116  9  ~/myapp.py
--'  114  0  ~/myapp.py
--'  71  27  ~/myapp.py
--'  58  36  ~/myapp.py
--'  45  26  ~/myapp.py
--'  42  30  ~/myapp.py
--'  75  28  ~/myapp.py
--'  110  19  ~/myapp.py
--'  63  63  ~/myapp.py
+-'  225  0  ~/myapp.py
+-'  192  9  ~/myapp.py
+-'  190  0  ~/myapp.py
+-'  108  27  ~/myapp.py
+-'  95  36  ~/myapp.py
+-'  82  26  ~/myapp.py
+-'  79  30  ~/myapp.py
+-'  112  28  ~/myapp.py
+-'  186  19  ~/myapp.py
+-'  100  63  ~/myapp.py
 -'  7  8  ~/myapp.py
 -'  79  34  ~/topology.xml
 -'  1  0  ~/topology.xml
 -'  1  0  ~/to
--'  92  0  ~/myapp.py
--'  109  12  ~/myapp.py
--'  104  0  ~/myapp.py
--'  113  12  ~/myapp.py
+-'  129  0  ~/myapp.py
+-'  185  12  ~/myapp.py
+-'  140  0  ~/myapp.py
+-'  189  12  ~/myapp.py
 -'  3  7  ~/myapp.py
--'  12  29  ~/myapp.py
+-'  13  29  ~/myapp.py
 -'  210  7  ~/topology.xml
--'  103  13  ~/myapp.py
+-'  139  13  ~/myapp.py
 -'  484  7  ~/topology.xml
 -'  747  7  ~/topology.xml
--'  97  24  ~/myapp.py
--'  89  49  ~/myapp.py
--'  79  14  ~/myapp.py
--'  81  23  ~/myapp.py
+-'  134  24  ~/myapp.py
+-'  126  49  ~/myapp.py
+-'  116  14  ~/myapp.py
+-'  118  23  ~/myapp.py
 -'  776  0  ~/topology.xml
--'  17  0  ~/myapp.py
--'  84  0  ~/myapp.py
--'  23  0  ~/myapp.py
--'  82  85  ~/myapp.py
--'  31  13  ~/myapp.py
--'  62  33  ~/myapp.py
--'  85  38  ~/myapp.py
--'  53  35  ~/myapp.py
--'  55  0  ~/myapp.py
--'  52  16  ~/myapp.py
--'  51  29  ~/myapp.py
+-'  18  0  ~/myapp.py
+-'  121  0  ~/myapp.py
+-'  59  0  ~/myapp.py
+-'  119  85  ~/myapp.py
+-'  68  13  ~/myapp.py
+-'  99  33  ~/myapp.py
+-'  122  38  ~/myapp.py
+-'  90  35  ~/myapp.py
+-'  92  0  ~/myapp.py
+-'  89  16  ~/myapp.py
+-'  88  29  ~/myapp.py
 -'  3  35  ~/read.py
 -'  1  0  ~/read.py
 -'  10  0  ~/read.py
@@ -217,132 +258,123 @@
 -'  13  4  ~/read.py
 -'  8  0  ~/read.py
 -'  12  32  ~/read.py
--'  792  0  ~/topology.xml
--'  14  1  ~/read.py
--'  755  0  ~/topology.xml
--'  876  15  ~/topology.xml
--'  6  0  ~/read.py
--'  769  0  ~/topology.xml
--'  2  0  ~/read.py
--'  956  0  ~/topology.xml
--'  4  30  ~/read.py
--'  181  9  ~/myapp.py
--'  176  0  ~/myapp.py
--'  182  0  ~/myapp.py
--'  178  9  ~/myapp.py
--'  167  0  ~/myapp.py
--'  179  10  ~/myapp.py
--'  177  7  ~/myapp.py
--'  175  7  ~/myapp.py
--'  164  2  ~/myapp.py
 
 # History of marks within files (newest to oldest):
 
 > ~/myapp.py
-	"	1	0
-	^	135	0
-	.	135	0
-	+	101	58
-	+	101	50
-	+	101	31
-	+	101	70
-	+	102	0
-	+	101	6
-	+	101	4
-	+	101	11
-	+	101	4
-	+	101	106
-	+	101	41
-	+	100	0
-	+	101	2
-	+	101	102
-	+	101	21
-	+	101	37
-	+	101	31
-	+	101	24
-	+	101	27
-	+	101	2
-	+	101	87
-	+	101	84
-	+	101	4
-	+	101	33
-	+	101	22
-	+	101	34
-	+	101	17
-	+	101	0
-	+	101	1
-	+	101	0
-	+	101	2
-	+	101	2
-	+	95	22
-	+	96	45
-	+	101	0
-	+	17	0
-	+	97	0
-	+	101	3
-	+	94	28
-	+	95	37
-	+	95	0
-	+	101	0
-	+	95	39
-	+	96	0
-	+	98	46
-	+	99	0
-	+	101	4
-	+	101	4
-	+	102	0
-	+	86	52
-	+	111	0
-	+	163	0
-	+	135	2
-	+	163	4
-	+	164	0
-	+	134	33
-	+	126	23
-	+	125	46
-	+	126	45
-	+	163	3
-	+	126	12
-	+	134	15
-	+	128	0
-	+	129	0
-	+	130	0
-	+	132	0
-	+	126	50
-	+	126	50
-	+	127	0
-	+	127	132
-	+	128	0
-	+	129	0
-	+	130	0
-	+	132	0
-	+	134	15
-	+	128	17
-	+	128	0
-	+	129	0
-	+	130	0
-	+	132	0
-	+	134	15
-	+	129	0
-	+	128	0
-	+	129	0
-	+	130	0
-	+	132	0
-	+	132	6
-	+	131	30
-	+	134	15
-	+	135	0
-	+	139	15
-	+	142	4
-	+	143	25
-	+	148	6
-	+	149	6
-	+	157	4
-	+	158	32
-	+	161	0
-	+	164	0
-	+	135	0
-	e	109	0
+	"	155	0
+	^	155	0
+	.	157	0
+	+	141	8
+	+	164	27
+	+	162	5
+	+	156	19
+	+	173	2
+	+	146	32
+	+	149	9
+	+	144	26
+	+	149	15
+	+	148	24
+	+	149	12
+	+	148	23
+	+	149	13
+	+	148	13
+	+	149	12
+	+	148	3
+	+	149	3
+	+	145	14
+	+	146	0
+	+	148	3
+	+	149	17
+	+	146	3
+	+	149	24
+	+	151	66
+	+	151	63
+	+	153	51
+	+	149	8
+	+	153	71
+	+	152	24
+	+	155	63
+	+	156	13
+	+	155	60
+	+	147	9
+	+	150	16
+	+	148	2
+	+	149	3
+	+	150	3
+	+	151	2
+	+	152	6
+	+	153	3
+	+	155	4
+	+	156	5
+	+	148	2
+	+	149	3
+	+	150	3
+	+	156	5
+	+	151	2
+	+	152	6
+	+	153	3
+	+	155	4
+	+	156	16
+	+	156	17
+	+	158	20
+	+	145	32
+	+	147	18
+	+	150	22
+	+	158	27
+	+	152	38
+	+	154	34
+	+	153	0
+	+	152	48
+	+	152	78
+	+	159	19
+	+	142	8
+	+	159	14
+	+	151	82
+	+	152	4
+	+	152	52
+	+	153	4
+	+	154	5
+	+	155	5
+	+	156	6
+	+	158	6
+	+	159	6
+	+	159	21
+	+	159	30
+	+	142	0
+	+	143	49
+	+	144	0
+	+	152	4
+	+	152	52
+	+	153	4
+	+	154	5
+	+	155	5
+	+	156	6
+	+	158	6
+	+	159	9
+	+	159	8
+	+	159	7
+	+	157	6
+	+	153	0
+	+	157	6
+	+	151	2
+	+	159	2
+	+	148	23
+	+	145	14
+	+	151	0
+	+	159	0
+	+	158	0
+	+	157	0
+	e	185	0
+
+> ~/path.py
+	"	22	0
+	^	22	0
+	.	21	28
+	+	13	44
+	+	14	0
+	+	13	31
+	+	21	28
 
 > ~/test.py
 	"	1	0
