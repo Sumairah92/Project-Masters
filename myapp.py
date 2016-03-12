@@ -14,6 +14,7 @@ dpids = list()
 edges = list()
 interfaces = list()
 links = list()
+interswitchLinks = list()
 Network = nx.Graph()
 Bandwidth_t1 = dict()
 Bandwidth_t2 = dict()
@@ -82,6 +83,7 @@ for node in obj.rspec.node:
     	interfaces= []
 	dp = None
 
+#------Add edges and identify interswitch Links-----#
 for nodes in Network.nodes():
 	for i,interface in enumerate(Network.node[nodes]['interfaces']):
 		L1 =  Network.node[nodes]['interfaces'][i]['link']
@@ -90,10 +92,13 @@ for nodes in Network.nodes():
 			for i2,interface2 in enumerate(Network.node[nodes2]['interfaces']):
 				if (Network.node[nodes2]['interfaces'][i2]['link']== L1) and (nodes2 <> e1):
 					e2 = nodes2
+					if "s" in nodes2 and "s" in nodes:
+						interswitchLinks.append(L1)
 		Network.add_edge(e1,e2)
+interswitchLinks = list(set(interswitchLinks))
 
 #print Network.nodes(data=True)
-
+								
 #for path in nx.all_simple_paths(Network, source='h2', target='h3'):
 #    print path
 print "Topology created"
@@ -102,6 +107,7 @@ print "Topology created"
 
 print "Preparing for querying statistics"
 time.sleep(5)
+
 
 #------enable statistics in the switches---#
 
@@ -116,26 +122,31 @@ while True:
 		if Network.node[nodes]['DPID'] is not None:
         		for i,interface in enumerate(Network.node[nodes]['interfaces']):
                 		P =  Network.node[nodes]['interfaces'][i]['Port']
-				if P <> 'local':
+				L = Network.node[nodes]['interfaces'][i]['link']
+				if (P <> 'local') and (L in interswitchLinks):
                 			command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
                 			result=os.popen(command).read()
                 			parsedResult = json.loads(result)
                 			for result in parsedResult:
-						Bandwidth_t1[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
+						if (result['port'] == P):
+							Bandwidth_t1[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
 	
 	time.sleep(10)
+
 #----------Query for stats at t2----------#
 
 	for nodes in Network.nodes():
         	if Network.node[nodes]['DPID'] is not None:
                 	for i,interface in enumerate(Network.node[nodes]['interfaces']):
                         	P =  Network.node[nodes]['interfaces'][i]['Port']
-                        	if P <> 'local':
+				L = Network.node[nodes]['interfaces'][i]['link']
+                        	if (P <> 'local') and (L in interswitchLinks):
                                         command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
                                         result=os.popen(command).read()
                                         parsedResult = json.loads(result)
                                         for result in parsedResult:
-						Bandwidth_t2[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
+						if (result['port'] == P):
+							Bandwidth_t2[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
 
 #----------Calculate Bandwidth Difference----------#
 
@@ -143,10 +154,11 @@ while True:
                 if Network.node[nodes]['DPID'] is not None:
                         for i,interface in enumerate(Network.node[nodes]['interfaces']):
                                 P =  Network.node[nodes]['interfaces'][i]['Port']
-                                if P <> 'local':
+				L = Network.node[nodes]['interfaces'][i]['link']
+                                if (P <> 'local') and (L in interswitchLinks):
                                 	BandwidthUsage[Network.node[nodes]['DPID']+P] = Bandwidth_t2[Network.node[nodes]['DPID']+P] - Bandwidth_t1[Network.node[nodes]['DPID']+P]
 
 	print BandwidthUsage	
 #add route
 
-
+	
