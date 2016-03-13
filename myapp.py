@@ -140,13 +140,14 @@ def generate_rule_for_path(path,sourceIP,destIP):
 #		print result
 		
 
-for path in nx.all_simple_paths(Network, source='h2', target='h3'):
+'''for path in nx.all_simple_paths(Network, source='h2', target='h3'):
         if path not in nx.shortest_path(Network, source='h2', target='h3'):
 		sendPath = path
 
 sourceip=Network.node['h2']['interfaces'][0]['IP']
 destip=Network.node['h3']['interfaces'][0]['IP']
 generate_rule_for_path(sendPath,sourceip,destip)
+'''
 '''
 #---------get statistics-----------#
 
@@ -207,3 +208,18 @@ while True:
 	
 '''
 #-------Poll switches to see which flows are active-----#	
+for d in dpids:
+	command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,d)
+	result=os.popen(command).read()
+	parsedResult = json.loads(result)
+	for nodes in Network.nodes():
+        	if Network.node[nodes]['DPID'] == d:
+                        for i,interface in enumerate(Network.node[nodes]['interfaces']):
+                                ip=Network.node[nodes]['interfaces'][i]['IP']
+                                for flows in parsedResult['flows']:
+                			if (flows['priority'] <>'2'):
+                        			hostIp=flows['match']['ipv4_src']
+						if (hostIp[:-2] == ip[:-2]):
+                                			print "match found %s",ip,hostIp,nodes
+       	                        			break					
+

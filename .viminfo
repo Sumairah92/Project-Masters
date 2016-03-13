@@ -12,7 +12,20 @@
 
 # Command Line History (newest to oldest):
 :wq!
+:230
+:222
+:215
+:22
+:217
+:224
+:221
+:218
+:213
+:212
+:214
 :q!
+:200
+:150
 :180
 :170
 :190
@@ -32,7 +45,6 @@
 :130
 :132
 :s
-:150
 :161
 :94
 :98
@@ -49,18 +61,6 @@
 :88
 :80
 :62
-:38
-:37
-:40
-:30
-:77
-:78
-:75
-:70
-:66
-:73
-:60
-:56
 
 # Search String History (newest to oldest):
 ? \<result\>
@@ -76,6 +76,38 @@
 
 # Registers:
 ""1	CHAR	0
+	'''
+	        for flows in parsedResult['flows']:
+	                if (flows['priority'] <>'2'):
+	                        hostIp=flows['match']['ipv4_src']
+	                        print "HostIP checking %s",hostIp
+	                        for nodes in Network.nodes():
+	                                if Network.node[nodes]['DPID'] == d:
+	                                        print "node matched %s",nodes
+	                                        for i,interface in enumerate(Network.node[nodes]['interfaces']):
+	                                                print interface
+	                                                ip=Network.node[nodes]['interfaces'][i]['IP']
+	                                                if (hostIp[:-2] == ip[:-2]):
+	                                                        print "match found %s",ip
+	                                                        break
+	'''	
+"2	CHAR	0
+	'''
+		for flows in parsedResult['flows']:
+			if (flows['priority'] <>'2'):
+				hostIp=flows['match']['ipv4_src']
+				print "HostIP checking %s",hostIp
+				for nodes in Network.nodes():
+					if Network.node[nodes]['DPID'] == d:
+						print "node matched %s",nodes
+						for i,interface in enumerate(Network.node[nodes]['interfaces']):
+							print interface
+							ip=Network.node[nodes]['interfaces'][i]['IP']
+							if (hostIp[:-2] == ip[:-2]):
+								print "match found %s",ip
+								break
+	'''
+"3	CHAR	0
 	#Declare static flowpusher class
 	
 	class StaticFlowPusher(object):
@@ -113,7 +145,7 @@
 	pusher = StaticFlowPusher('128.163.232.72')
 	
 	
-"2	CHAR	0
+"4	CHAR	0
 							'''
 							
 							flow = {
@@ -128,18 +160,18 @@
 	                                                        "actions":"output="+port
 	                                                        }'''
 		
-"3	CHAR	0
+"5	CHAR	0
 			print "node:%s",p
 	
-"4	CHAR	0
+"6	CHAR	0
 		print "node interface:%s",interface
 	
-"5	CHAR	0
+"7	CHAR	0
 	for path in nx.all_simple_paths(Network, source='h2', target='h3'):
 		if path not in nx.shortest_path(Network, source='h2', target='h3')
 	    		sendPath = path
 	 
-"6	CHAR	0
+"8	CHAR	0
 		for nodes in Network.nodes():
 	        	for i,interface in enumerate(Network.node[nodes]['interfaces']):
 	                	L1 =  Network.node[nodes]['interfaces'][i]['link']
@@ -153,48 +185,48 @@
 	                	Network.add_edge(e1,e2)
 	
 	
-"7	CHAR	0
+"9	CHAR	0
 	def generate_rule_for_path(path,sourceIP,destIP):
 			
 	
 	
 	
 	
-"8	CHAR	0
-	
-	#
-"9	CHAR	0
-						print command
-	
 "-	CHAR	0
 	i
 
 # File marks:
-'0  7  8  ~/myapp.py
-'1  1  0  ~/myapp.py
-'2  138  86  ~/myapp.py
-'3  152  0  ~/myapp.py
-'4  140  13  ~/myapp.py
-'5  138  101  ~/myapp.py
-'6  128  21  ~/myapp.py
-'7  121  52  ~/myapp.py
-'8  137  42  ~/myapp.py
-'9  137  52  ~/myapp.py
+'0  225  0  ~/myapp.py
+'1  216  44  ~/myapp.py
+'2  214  33  ~/myapp.py
+'3  224  34  ~/myapp.py
+'4  214  67  ~/myapp.py
+'5  214  54  ~/myapp.py
+'6  214  45  ~/myapp.py
+'7  214  67  ~/myapp.py
+'8  214  70  ~/myapp.py
+'9  214  39  ~/myapp.py
 
 # Jumplist (newest first):
--'  7  8  ~/myapp.py
+-'  225  0  ~/myapp.py
 -'  1  0  ~/myapp.py
+-'  216  44  ~/myapp.py
+-'  214  33  ~/myapp.py
+-'  224  34  ~/myapp.py
+-'  212  78  ~/myapp.py
+-'  211  18  ~/myapp.py
+-'  128  0  ~/myapp.py
+-'  7  8  ~/myapp.py
 -'  138  86  ~/myapp.py
--'  152  0  ~/myapp.py
+-'  153  0  ~/myapp.py
 -'  140  13  ~/myapp.py
--'  128  21  ~/myapp.py
 -'  121  52  ~/myapp.py
 -'  137  42  ~/myapp.py
 -'  134  63  ~/myapp.py
 -'  132  21  ~/myapp.py
 -'  129  10  ~/myapp.py
 -'  136  0  ~/myapp.py
--'  161  0  ~/myapp.py
+-'  162  0  ~/myapp.py
 -'  125  37  ~/myapp.py
 -'  126  21  ~/myapp.py
 -'  135  15  ~/myapp.py
@@ -211,17 +243,17 @@
 -'  127  24  ~/myapp.py
 -'  148  2  ~/myapp.py
 -'  149  0  ~/myapp.py
--'  208  20  ~/myapp.py
+-'  209  20  ~/myapp.py
 -'  27  34  ~/myapp.py
 -'  23  3  ~/myapp.py
 -'  22  0  ~/path.py
 -'  1  0  ~/path.py
--'  156  7  ~/myapp.py
--'  179  0  ~/myapp.py
--'  178  15  ~/myapp.py
--'  171  149  ~/myapp.py
--'  170  63  ~/myapp.py
--'  207  2  ~/myapp.py
+-'  157  7  ~/myapp.py
+-'  180  0  ~/myapp.py
+-'  179  15  ~/myapp.py
+-'  172  149  ~/myapp.py
+-'  171  63  ~/myapp.py
+-'  208  2  ~/myapp.py
 -'  99  21  ~/myapp.py
 -'  98  32  ~/myapp.py
 -'  95  65  ~/myapp.py
@@ -229,162 +261,149 @@
 -'  101  3  ~/myapp.py
 -'  96  45  ~/myapp.py
 -'  100  0  ~/myapp.py
--'  205  0  ~/myapp.py
--'  176  55  ~/myapp.py
--'  203  138  ~/myapp.py
--'  177  12  ~/myapp.py
--'  204  15  ~/myapp.py
--'  194  27  ~/myapp.py
--'  191  0  ~/myapp.py
--'  172  49  ~/myapp.py
--'  190  5  ~/myapp.py
+-'  206  0  ~/myapp.py
+-'  177  55  ~/myapp.py
+-'  204  138  ~/myapp.py
+-'  178  12  ~/myapp.py
+-'  205  15  ~/myapp.py
+-'  195  27  ~/myapp.py
+-'  192  0  ~/myapp.py
+-'  173  49  ~/myapp.py
+-'  191  5  ~/myapp.py
 -'  2  0  ~/myapp.py
 -'  1  0  ~/test.py
 -'  1  0  ~/t
--'  174  44  ~/myapp.py
+-'  175  44  ~/myapp.py
 -'  27  0  ~/test.py
 -'  26  49  ~/test.py
 -'  22  23  ~/test.py
--'  193  0  ~/myapp.py
--'  160  9  ~/myapp.py
--'  158  0  ~/myapp.py
+-'  194  0  ~/myapp.py
+-'  161  9  ~/myapp.py
+-'  159  0  ~/myapp.py
 -'  71  27  ~/myapp.py
 -'  58  36  ~/myapp.py
 -'  45  26  ~/myapp.py
 -'  42  30  ~/myapp.py
 -'  75  28  ~/myapp.py
--'  154  19  ~/myapp.py
+-'  155  19  ~/myapp.py
 -'  63  63  ~/myapp.py
 -'  79  34  ~/topology.xml
 -'  1  0  ~/topology.xml
 -'  1  0  ~/to
 -'  92  0  ~/myapp.py
--'  153  12  ~/myapp.py
+-'  154  12  ~/myapp.py
 -'  103  0  ~/myapp.py
--'  157  12  ~/myapp.py
+-'  158  12  ~/myapp.py
 -'  3  7  ~/myapp.py
 -'  12  29  ~/myapp.py
--'  210  7  ~/topology.xml
--'  102  13  ~/myapp.py
--'  484  7  ~/topology.xml
--'  747  7  ~/topology.xml
--'  97  24  ~/myapp.py
--'  89  49  ~/myapp.py
--'  79  14  ~/myapp.py
--'  81  23  ~/myapp.py
--'  776  0  ~/topology.xml
--'  17  0  ~/myapp.py
--'  84  0  ~/myapp.py
--'  175  86  ~/myapp.py
--'  189  0  ~/myapp.py
 
 # History of marks within files (newest to oldest):
 
 > ~/myapp.py
-	"	7	8
-	^	7	9
-	.	8	0
-	+	115	0
-	+	118	6
-	+	113	25
-	+	118	53
-	+	111	55
-	+	110	14
-	+	113	23
-	+	118	51
-	+	118	17
-	+	118	0
-	+	112	0
-	+	111	34
-	+	112	4
-	+	113	4
-	+	112	0
-	+	114	0
-	+	123	0
-	+	118	19
-	+	119	54
-	+	120	61
-	+	122	12
-	+	117	0
-	+	122	2
-	+	123	7
-	+	142	0
-	+	123	5
-	+	124	10
-	+	125	10
-	+	126	6
-	+	127	10
-	+	128	6
-	+	129	10
-	+	130	6
-	+	131	10
-	+	132	77
-	+	121	50
-	+	132	80
-	+	133	12
-	+	135	15
-	+	126	21
-	+	125	37
-	+	134	14
-	+	106	49
-	+	109	0
-	+	134	21
-	+	108	0
-	+	134	6
-	+	107	17
-	+	135	27
-	+	136	22
-	+	141	1
-	+	23	40
-	+	136	22
-	+	137	24
-	+	137	5
-	+	137	30
-	+	127	0
-	+	126	16
-	+	128	18
-	+	129	21
-	+	130	18
-	+	137	22
-	+	137	44
-	+	121	61
-	+	134	0
-	+	134	67
-	+	137	44
-	+	137	22
-	+	134	6
-	+	137	44
-	+	134	63
-	+	137	52
-	+	137	22
-	+	134	5
-	+	134	59
-	+	122	0
-	+	137	45
-	+	138	0
-	+	137	45
-	+	138	1
-	+	128	22
-	+	138	1
-	+	137	52
-	+	138	2
-	+	137	44
-	+	138	88
-	+	138	32
-	+	138	101
-	+	138	45
-	+	138	87
-	+	139	33
-	+	140	13
-	+	135	0
-	+	134	0
-	+	137	44
-	+	138	0
-	+	139	0
-	+	140	0
-	+	24	0
-	+	8	0
-	e	153	0
+	"	225	0
+	^	216	45
+	.	226	0
+	+	214	34
+	+	212	0
+	+	211	13
+	+	212	78
+	+	213	1
+	+	214	1
+	+	214	35
+	+	212	80
+	+	213	1
+	+	214	1
+	+	213	7
+	+	214	35
+	+	213	0
+	+	214	57
+	+	214	43
+	+	214	68
+	+	214	43
+	+	214	35
+	+	214	35
+	+	214	35
+	+	214	67
+	+	214	46
+	+	214	68
+	+	214	58
+	+	214	71
+	+	214	56
+	+	214	64
+	+	214	59
+	+	214	62
+	+	214	37
+	+	214	90
+	+	214	60
+	+	214	37
+	+	214	68
+	+	214	68
+	+	214	34
+	+	214	34
+	+	214	70
+	+	214	98
+	+	214	118
+	+	214	42
+	+	214	119
+	+	214	46
+	+	214	101
+	+	214	84
+	+	214	45
+	+	214	88
+	+	214	40
+	+	214	88
+	+	214	65
+	+	214	40
+	+	214	99
+	+	214	85
+	+	214	41
+	+	214	70
+	+	214	34
+	+	214	34
+	+	214	67
+	+	214	55
+	+	214	67
+	+	214	45
+	+	214	48
+	+	214	54
+	+	214	48
+	+	214	80
+	+	214	47
+	+	214	62
+	+	214	74
+	+	214	67
+	+	214	63
+	+	214	34
+	+	214	36
+	+	224	0
+	+	215	0
+	+	216	8
+	+	216	61
+	+	217	24
+	+	217	112
+	+	218	32
+	+	219	32
+	+	223	32
+	+	224	32
+	+	223	32
+	+	222	3
+	+	221	60
+	+	219	32
+	+	220	18
+	+	221	26
+	+	221	86
+	+	222	5
+	+	223	34
+	+	224	45
+	+	225	0
+	+	215	0
+	+	215	0
+	+	223	72
+	+	222	0
+	+	218	0
+	+	217	0
+	+	226	0
+	e	154	0
 
 > ~/path.py
 	"	22	0
