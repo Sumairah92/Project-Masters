@@ -19,6 +19,7 @@ Network = nx.Graph()
 Bandwidth_t1 = dict()
 Bandwidth_t2 = dict()
 BandwidthUsage = dict()
+switchHostsFlows=list()
 
 # Get switch and link information from the controller
 
@@ -97,13 +98,52 @@ for nodes in Network.nodes():
 		Network.add_edge(e1,e2)
 interswitchLinks = list(set(interswitchLinks))
 
+#-------Make list of host IPs connected to switches------------#
+for d in dpids:
+        command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,d)
+        result=os.popen(command).read()
+        parsedResult = json.loads(result)
+        for nodes in Network.nodes():
+                if Network.node[nodes]['DPID'] == d:
+                        for i,interface in enumerate(Network.node[nodes]['interfaces']):
+                                ip=Network.node[nodes]['interfaces'][i]['IP']
+				port=Network.node[nodes]['interfaces'][i]['Port']
+                                for flows in parsedResult['flows']:
+                                        if (flows['priority'] == '1'):
+                                                hostIp=flows['match']['ipv4_src']
+						dstIp=flows['match']['ipv4_dst']
+                                                if (hostIp[:-2] == ip[:-2]):
+							for nodes2 in Network.nodes():
+								 for i2,interface2 in enumerate(Network.node[nodes2]['interfaces']):
+									if (Network.node[nodes2]['interfaces'][i2]['IP']== hostIp):
+										hostName=nodes2
+									if (Network.node[nodes2]['interfaces'][i2]['IP']== dstIp):
+										dstName=nodes2
+                                                        I = {'switchName':nodes,
+                                                              'host':hostIp,
+							      'hostName':hostName,
+							      'dst':dstIp,
+							      'dstName':dstName,
+                                                              'dpid': d,
+							      'lastFlowHit':flows['packetCount']}
+                                                        switchHostsFlows.append(I)
+                                                        
 #print Network.nodes(data=True)
+#print switchHostsFlows
 								
 
 print "Topology created"
 count = 0
 
 def generate_rule_for_path(path,sourceIP,destIP):
+	for s in switchHostsFlows:
+		command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,s['dpid'])
+		result=os.popen(command).read()
+                parsedResult = json.loads(result)
+		for flows in parsedResult['flows']:
+                        if (flows['priority'] =='3'):
+                                if ((flows['match']['ipv4_src'] == sourceIP) and (flows['match']['ipv4_dst'] == destIP)):
+					return
 	flowList = list()
 	global count
 	for i,p in enumerate(path):
@@ -128,6 +168,7 @@ def generate_rule_for_path(path,sourceIP,destIP):
 							"eth_type":"0x0800", 
     							"ipv4_src":sourceIP,
 							"ipv4_dst":destIP,
+							 "idle_timeout":"60",
     							"active":"true",
     							"actions":"set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port
     							}
@@ -136,8 +177,9 @@ def generate_rule_for_path(path,sourceIP,destIP):
 	for flow in flowList:
 		f = json.dumps(flow,separators=(',', ':'))
 		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
-#		result=os.popen(command).read()
-#		print result
+#		print command
+		result=os.popen(command).read()
+		print result
 		
 
 '''for path in nx.all_simple_paths(Network, source='h2', target='h3'):
@@ -208,18 +250,25 @@ while True:
 	
 '''
 #-------Poll switches to see which flows are active-----#	
-for d in dpids:
-	command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,d)
-	result=os.popen(command).read()
-	parsedResult = json.loads(result)
-	for nodes in Network.nodes():
-        	if Network.node[nodes]['DPID'] == d:
-                        for i,interface in enumerate(Network.node[nodes]['interfaces']):
-                                ip=Network.node[nodes]['interfaces'][i]['IP']
-                                for flows in parsedResult['flows']:
-                			if (flows['priority'] <>'2'):
-                        			hostIp=flows['match']['ipv4_src']
-						if (hostIp[:-2] == ip[:-2]):
-                                			print "match found %s",ip,hostIp,nodes
-       	                        			break					
+while True:
+	for s in switchHostsFlows:
+		command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,s['dpid'])
+		result=os.popen(command).read()
+        	parsedResult = json.loads(result)				
+		for flows in parsedResult['flows']:
+			if (flows['priority'] =='1'):
+                		if (flows['match']['ipv4_src'] in s['host'] and flows['match']['ipv4_dst'] in s['dst']):
+					if (s['lastFlowHit'] == flows['packetCount']):
+						print "No flow for %s to %s active", s['host'], s['dst']
+					else:
+						s['lastFlowHit'] = flows['packetCount']
+						#Get bandwidth
+						for path in nx.all_simple_paths(Network, source=s['hostName'], target=s['dstName']):
+        						if path <> nx.shortest_path(Network, source=s['hostName'], target=s['dstName']):
+								sendPath = path
 
+						sourceip=s['host']
+						destip=flows['match']['ipv4_dst']
+#						print sendPath,sourceip,destip
+						generate_rule_for_path(sendPath,sourceip,destip)
+	time.sleep(10)			
