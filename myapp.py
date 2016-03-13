@@ -5,7 +5,6 @@ import time
 import untangle
 import time
 import re
-import httplib
 import networkx as nx
 
 #Declare variables
@@ -20,42 +19,6 @@ Network = nx.Graph()
 Bandwidth_t1 = dict()
 Bandwidth_t2 = dict()
 BandwidthUsage = dict()
-
-#Declare static flowpusher class
-
-class StaticFlowPusher(object):
- 
-    def __init__(self, server):
-        self.server = server
- 
-    def get(self, data):
-        ret = self.rest_call({}, 'GET')
-        return json.loads(ret[2])
- 
-    def set(self, data):
-        ret = self.rest_call(data, 'POST')
-        return ret[0] == 200
- 
-    def remove(self, objtype, data):
-        ret = self.rest_call(data, 'DELETE')
-        return ret[0] == 200
- 
-    def rest_call(self, data, action):
-        path = '/wm/staticflowpusher/json'
-        headers = {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            }
-        body = json.dumps(data)
-        conn = httplib.HTTPConnection(self.server, 8080)
-        conn.request(action, path, body, headers)
-        response = conn.getresponse()
-        ret = (response.status, response.reason, response.read())
-        print ret
-        conn.close()
-        return ret
-
-pusher = StaticFlowPusher('128.163.232.72')
 
 # Get switch and link information from the controller
 
@@ -141,36 +104,42 @@ print "Topology created"
 count = 0
 
 def generate_rule_for_path(path,sourceIP,destIP):
+	flowList = list()
+	global count
 	for i,p in enumerate(path):
 		if "s" in p:# or i == len(path)-1:
 			dpid=Network.node[p]['DPID']
-			print "node:%s",p
 			if (i+1) < len(path):
 				nextHop = path[i+1]
-				print "nexthop:%s",nextHop
 			for i,interface in enumerate(Network.node[p]['interfaces']):
 				L = Network.node[p]['interfaces'][i]['link']
 				for i2,interface2 in enumerate(Network.node[nextHop]['interfaces']):
-					print "nexthop interface:%s",Network.node[nextHop]['interfaces'][i2]['link']
 					if (Network.node[nextHop]['interfaces'][i2]['link']== L):
-						finalLink=L
-#						print "node interface:%s",L
-						print "final Link:%s", finalLink
-							
-'''
+						finalLink = L
+						ethsrc = Network.node[p]['interfaces'][i]['MAC']
+						ethdst = Network.node[nextHop]['interfaces'][i2]['MAC']
+						port = Network.node[p]['interfaces'][i]['Port']
+		
+						flow = {
+    							'switch':dpid,
+    							"name":"flow_" + str(count),
+							"cookie":"0",
+    							"priority":"3",
+							"eth_type":"0x0800", 
+    							"ipv4_src":sourceIP,
+							"ipv4_dst":destIP,
+    							"active":"true",
+    							"actions":"set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port
+    							}
+						count += 1
+						flowList.append(flow)
+	for flow in flowList:
+		f = json.dumps(flow,separators=(',', ':'))
+		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
+#		result=os.popen(command).read()
+#		print result
+		
 
-	flow = {
-    		'switch':dpid,
-    		"name":"flow_" + count,
-		"cookie" : "0"
-    		"priority":"3",
-		"eth_type" : "0x0x800", 
-    		"ipv4_src" : sourceIP,
-		"ipv4_dst" : destIP,
-    		"active":"true",
-    		"actions":"set_eth_src=02:cd:3b:33:87:63,set_eth_dst=02:43:58:c8:59:43,output=2"
-    		}
-'''
 for path in nx.all_simple_paths(Network, source='h2', target='h3'):
         if path not in nx.shortest_path(Network, source='h2', target='h3'):
 		sendPath = path
