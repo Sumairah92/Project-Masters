@@ -190,7 +190,7 @@ sourceip=Network.node['h2']['interfaces'][0]['IP']
 destip=Network.node['h3']['interfaces'][0]['IP']
 generate_rule_for_path(sendPath,sourceip,destip)
 '''
-'''
+
 #---------get statistics-----------#
 
 print "Preparing for querying statistics"
@@ -201,12 +201,12 @@ time.sleep(5)
 
 command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
 os.popen(command).read()
-
+'''
 while True:
 
 #----------Query for stats at t1----------#
 
-        for nodes in Network.nodes():
+	for nodes in Network.nodes():
 		if Network.node[nodes]['DPID'] is not None:
         		for i,interface in enumerate(Network.node[nodes]['interfaces']):
                 		P =  Network.node[nodes]['interfaces'][i]['Port']

@@ -12,10 +12,12 @@
 
 # Command Line History (newest to oldest):
 :wq!
+:222
+:254
+:q!
 :150
 :100
 :260
-:q!
 :259
 :263
 :256
@@ -36,7 +38,6 @@
 :238
 :0
 :228
-:222
 :215
 :22
 :217
@@ -60,7 +61,6 @@
 :146
 :wq
 :147
-:1
 
 # Search String History (newest to oldest):
 ? \<result\>
@@ -208,20 +208,25 @@
 	n
 
 # File marks:
-'0  177  21  ~/myapp.py
-'1  152  22  ~/myapp.py
-'2  170  24  ~/myapp.py
-'3  182  0  ~/myapp.py
-'4  150  25  ~/myapp.py
-'5  273  3  ~/myapp.py
-'6  272  3  ~/myapp.py
-'7  267  24  ~/myapp.py
-'8  267  152  ~/myapp.py
-'9  266  164  ~/myapp.py
+'0  221  0  ~/myapp.py
+'1  187  0  ~/myapp.py
+'2  274  0  ~/myapp.py
+'3  1  0  ~/m
+'4  154  0  ~/myapp.py
+'5  177  21  ~/myapp.py
+'6  152  22  ~/myapp.py
+'7  170  24  ~/myapp.py
+'8  182  0  ~/myapp.py
+'9  150  25  ~/myapp.py
 
 # Jumplist (newest first):
--'  177  21  ~/myapp.py
+-'  221  0  ~/myapp.py
 -'  1  0  ~/myapp.py
+-'  187  0  ~/myapp.py
+-'  274  0  ~/myapp.py
+-'  1  0  ~/m
+-'  154  0  ~/myapp.py
+-'  177  21  ~/myapp.py
 -'  152  22  ~/myapp.py
 -'  170  24  ~/myapp.py
 -'  182  0  ~/myapp.py
@@ -232,7 +237,6 @@
 -'  266  164  ~/myapp.py
 -'  184  0  ~/myapp.py
 -'  262  61  ~/myapp.py
--'  274  14  ~/myapp.py
 -'  253  24  ~/myapp.py
 -'  261  50  ~/myapp.py
 -'  263  9  ~/myapp.py
@@ -265,7 +269,6 @@
 -'  153  34  ~/myapp.py
 -'  151  54  ~/myapp.py
 -'  158  53  ~/myapp.py
--'  154  47  ~/myapp.py
 -'  138  58  ~/myapp.py
 -'  157  33  ~/myapp.py
 -'  167  24  ~/myapp.py
@@ -278,7 +281,6 @@
 -'  1  0  ~/path.py
 -'  199  7  ~/myapp.py
 -'  222  0  ~/myapp.py
--'  221  15  ~/myapp.py
 -'  214  149  ~/myapp.py
 -'  213  63  ~/myapp.py
 -'  250  2  ~/myapp.py
@@ -315,25 +317,13 @@
 -'  76  28  ~/myapp.py
 -'  197  19  ~/myapp.py
 -'  64  63  ~/myapp.py
--'  562  34  ~/topology.xml
--'  265  3  ~/myapp.py
 
 # History of marks within files (newest to oldest):
 
 > ~/myapp.py
-	"	177	21
-	^	177	22
-	.	171	26
-	+	270	22
-	+	271	37
-	+	274	4
-	+	273	5
-	+	253	2
-	+	274	2
-	+	22	15
-	+	120	10
-	+	114	37
-	+	120	67
+	"	221	0
+	^	221	0
+	.	221	0
 	+	121	23
 	+	126	30
 	+	130	56
@@ -424,7 +414,20 @@
 	+	172	0
 	+	152	23
 	+	171	26
+	+	194	0
+	+	193	0
+	+	251	2
+	+	223	0
+	+	221	2
+	+	253	0
+	+	209	0
+	+	253	0
+	+	204	2
+	+	221	0
 	e	196	0
+
+> ~/m
+	"	1	0
 
 > ~/topology.xml
 	"	210	7

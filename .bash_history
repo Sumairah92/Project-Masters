@@ -823,3 +823,376 @@ git add .
 git commit -m "13th"
 git push origin master
 exit
+vi myapp.py 
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/features/json
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/features/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/aggregate/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/desc/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/group-desc/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/groupdesc/json | python -m json.tool
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/group-desc/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/group/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/meter/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/port/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/port-desc/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/queue/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/table/json | python -m json.tool
+clear
+curl http://128.163.232.72:8080/wm/core/switch/00:00:82:dd:65:e1:5b:4b/flow/json | python -m json.tool
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+curl http://128.163.232.72:8080/wm/core/switch/all/flow/json | python -m json.tool
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+curl http://128.163.232.72:8080/wm/core/switch/all/flow/json | python -m json.tool
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+curl -s http://128.163.232.72:8080/wm/core/switch/'00:00:82:dd:65:e1:5b:4b'/flow/json
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+:212
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+clear
+git status
+git add .
+git commit -m "flow"
+git push origin master
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+curl -s http://128.163.232.72:8080/wm/core/switch/'00:00:82:dd:65:e1:5b:4b'/flow/json
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+rm topology.xml 
+vi topology.xml
+vi myapp.py 
+python myapp.py 
+clear
+rm topology.xml 
+vi myapp.py 
+vi topology.xml
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+cler
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+python myapp.py 
+clear
+python myapp.py 
+clear
+curl -X DELETE -d '{"name":"flow_0"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_1"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_2"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_3"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_4"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_5"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_6"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_7"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_8"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_9"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+clear
+curl -X DELETE -d '{"name":"flow_10"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_11"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+curl -X DELETE -d '{"name":"flow_0"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_1"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+python myapp.py 
+curl -X DELETE -d '{"name":"flow_2"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_3"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_4"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_5"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_6"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_7"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+curl -X DELETE -d '{"name":"flow_0"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_1"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_2"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_3"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_4"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_5"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_6"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_7"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+clear
+vi myapp.py 
+python myapp.py 
+curl -X DELETE -d '{"name":"flow_7"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_6"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_5"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_4"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_3"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_2"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_1"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+curl -X DELETE -d '{"name":"flow_0"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+clear
+vi myapp.py 
+python myapp.py 
+clear
+git status
+git add .
+git commit -m "path"
+git push origin master
+clear
+exit
