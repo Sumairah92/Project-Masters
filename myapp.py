@@ -9,7 +9,7 @@ import networkx as nx
 
 #Declare variables
 
-controllerIp = '128.163.232.72:8080'
+controllerIp = '150.182.135.41:8080'
 dpids = list()
 edges = list()
 interfaces = list()
@@ -97,7 +97,7 @@ for nodes in Network.nodes():
 						interswitchLinks.append(L1)
 		Network.add_edge(e1,e2)
 interswitchLinks = list(set(interswitchLinks))
-
+#print interswitchLinks
 #-------Make list of host IPs connected to switches------------#
 for d in dpids:
         command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,d)
@@ -177,9 +177,9 @@ def generate_rule_for_path(path,sourceIP,destIP):
 	for flow in flowList:
 		f = json.dumps(flow,separators=(',', ':'))
 		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
-#		print command
-		result=os.popen(command).read()
-		print result
+		print command
+#		result=os.popen(command).read()
+#		print result
 		
 
 '''for path in nx.all_simple_paths(Network, source='h2', target='h3'):
@@ -189,12 +189,17 @@ def generate_rule_for_path(path,sourceIP,destIP):
 sourceip=Network.node['h2']['interfaces'][0]['IP']
 destip=Network.node['h3']['interfaces'][0]['IP']
 generate_rule_for_path(sendPath,sourceip,destip)
-'''
 
+sendPath = nx.shortest_path(Network, source = 'h4', target = 'h3')
+print sendPath
+sourceip=Network.node['h4']['interfaces'][0]['IP']
+destip=Network.node['h3']['interfaces'][0]['IP']
+generate_rule_for_path(sendPath,sourceip,destip)
+'''
 #---------get statistics-----------#
 
 print "Preparing for querying statistics"
-time.sleep(5)
+#time.sleep(5)
 
 
 #------enable statistics in the switches---#
@@ -217,8 +222,8 @@ while True:
                 			parsedResult = json.loads(result)
                 			for result in parsedResult:
 						if (result['port'] == P):
-							Bandwidth_t1[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
-	
+							Bandwidth_t1[result['dpid']+result['port']] = 100000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
+	print Bandwidth_t1	
 	time.sleep(10)
 
 #----------Query for stats at t2----------#
@@ -248,8 +253,9 @@ while True:
 
 #	print BandwidthUsage	
 	
-'''
+
 #-------Poll switches to see which flows are active-----#	
+
 while True:
 	for s in switchHostsFlows:
 		command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,s['dpid'])
@@ -270,5 +276,6 @@ while True:
 						sourceip=s['host']
 						destip=flows['match']['ipv4_dst']
 #						print sendPath,sourceip,destip
-						generate_rule_for_path(sendPath,sourceip,destip)
-	time.sleep(10)			
+#						generate_rule_for_path(sendPath,sourceip,destip)
+	time.sleep(10)
+'''			
