@@ -8,23 +8,29 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<result\>
+~Msle0~/\<pathBW\>
 
 # Command Line History (newest to oldest):
 :wq!
+:152
+:149
+:`149
+:130
+:250
+:145
+:150
+:140
+:259
+:q!
+:200
 :190
 :195
 :196
-:250
 :278
-:200
-:q!
 :222
 :254
-:150
 :100
 :260
-:259
 :263
 :256
 :230
@@ -55,14 +61,9 @@
 :170
 :185
 :173
-:160
-:165
-:155
-:157
-:145
-:152
 
 # Search String History (newest to oldest):
+? \<pathBW\>
 ? \<result\>
 ? \<print\>
 ?/link-0
@@ -75,7 +76,37 @@
 # Input Line History (newest to oldest):
 
 # Registers:
-"1	CHAR	0
+""1	CHAR	0
+	
+	#----------Query for stats at t2----------#
+	
+		for nodes in Network.nodes():
+	        	if Network.node[nodes]['DPID'] is not None:
+	                	for i,interface in enumerate(Network.node[nodes]['interfaces']):
+	                        	P =  Network.node[nodes]['interfaces'][i]['Port']
+					L = Network.node[nodes]['interfaces'][i]['link']
+	                        	if (P <> 'local') and (L in interswitchLinks):
+	                                        command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
+	                                        result=os.popen(command).read()
+	                                        parsedResult = json.loads(result)
+	                                        for result in parsedResult:
+							if (result['port'] == P):
+								Bandwidth_t2[result['dpid']+result['port']] = int(result['bits-per-second-tx'])+int(result['bits-per-second-rx'])
+	
+	#----------Calculate Bandwidth Difference----------#
+	
+		for nodes in Network.nodes():
+	                if Network.node[nodes]['DPID'] is not None:
+	                        for i,interface in enumerate(Network.node[nodes]['interfaces']):
+	                                P =  Network.node[nodes]['interfaces'][i]['Port']
+					L = Network.node[nodes]['interfaces'][i]['link']
+	                                if (P <> 'local') and (L in interswitchLinks):
+	                                	BandwidthUsage[Network.node[nodes]['DPID']+P] = Bandwidth_t2[Network.node[nodes]['DPID']+P] - Bandwidth_t1[Network.node[nodes]['DPID']+P]
+	
+	#	print BandwidthUsage	
+		
+	
+"2	CHAR	0
 	for d in dpids:
 		command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,d)
 		result=os.popen(command).read()
@@ -94,7 +125,7 @@
 								switchHosts.append(I)
 								break
 		
-"2	CHAR	0
+"3	CHAR	0
 	'''
 	        for flows in parsedResult['flows']:
 	                if (flows['priority'] <>'2'):
@@ -110,7 +141,7 @@
 	                                                        print "match found %s",ip
 	                                                        break
 	'''	
-"3	CHAR	0
+"4	CHAR	0
 	'''
 		for flows in parsedResult['flows']:
 			if (flows['priority'] <>'2'):
@@ -126,7 +157,7 @@
 								print "match found %s",ip
 								break
 	'''
-"4	CHAR	0
+"5	CHAR	0
 	#Declare static flowpusher class
 	
 	class StaticFlowPusher(object):
@@ -164,7 +195,7 @@
 	pusher = StaticFlowPusher('128.163.232.72')
 	
 	
-"5	CHAR	0
+"6	CHAR	0
 							'''
 							
 							flow = {
@@ -179,253 +210,238 @@
 	                                                        "actions":"output="+port
 	                                                        }'''
 		
-"6	CHAR	0
+"7	CHAR	0
 			print "node:%s",p
 	
-"7	CHAR	0
+"8	CHAR	0
 		print "node interface:%s",interface
 	
-"8	CHAR	0
+"9	CHAR	0
 	for path in nx.all_simple_paths(Network, source='h2', target='h3'):
 		if path not in nx.shortest_path(Network, source='h2', target='h3')
 	    		sendPath = path
 	 
-"9	CHAR	0
-		for nodes in Network.nodes():
-	        	for i,interface in enumerate(Network.node[nodes]['interfaces']):
-	                	L1 =  Network.node[nodes]['interfaces'][i]['link']
-	                	e1 = nodes
-	                	for nodes2 in Network.nodes():
-	                        	for i2,interface2 in enumerate(Network.node[nodes2]['interfaces']):
-	                                	if (Network.node[nodes2]['interfaces'][i2]['link']== L1) and (nodes2 <> e1):
-	                                        	e2 = nodes2
-	                                        	if "s" in nodes2 and "s" in nodes:
-	                                                	interswitchLinks.append(L1)
-	                	Network.add_edge(e1,e2)
-	
-	
-""-	CHAR	0
+"-	CHAR	0
 	n
 
 # File marks:
-'0  216  2  ~/myapp.py
-'1  193  63  ~/myapp.py
-'2  196  22  ~/myapp.py
-'3  1  0  ~/myapp.py
-'4  194  13  ~/myapp.py
-'5  281  2  ~/myapp.py
-'6  203  0  ~/myapp.py
-'7  279  0  ~/myapp.py
-'8  132  0  ~/myapp.py
-'9  100  21  ~/myapp.py
+'0  156  1  ~/myapp.py
+'1  154  11  ~/myapp.py
+'2  153  17  ~/myapp.py
+'3  151  2  ~/myapp.py
+'4  152  11  ~/myapp.py
+'5  155  25  ~/myapp.py
+'6  139  92  ~/myapp.py
+'7  136  56  ~/myapp.py
+'8  247  12  ~/myapp.py
+'9  146  0  ~/myapp.py
 
 # Jumplist (newest first):
--'  216  2  ~/myapp.py
+-'  156  1  ~/myapp.py
 -'  1  0  ~/myapp.py
--'  193  63  ~/myapp.py
--'  196  22  ~/myapp.py
--'  194  13  ~/myapp.py
--'  281  2  ~/myapp.py
--'  203  0  ~/myapp.py
--'  279  0  ~/myapp.py
--'  132  0  ~/myapp.py
--'  100  21  ~/myapp.py
--'  131  28  ~/myapp.py
+-'  154  11  ~/myapp.py
+-'  153  17  ~/myapp.py
+-'  151  2  ~/myapp.py
+-'  152  6  ~/myapp.py
+-'  155  25  ~/myapp.py
+-'  139  92  ~/myapp.py
+-'  136  56  ~/myapp.py
+-'  247  12  ~/myapp.py
+-'  146  0  ~/myapp.py
+-'  145  47  ~/myapp.py
+-'  129  0  ~/myapp.py
+-'  248  40  ~/myapp.py
+-'  143  34  ~/myapp.py
+-'  140  96  ~/myapp.py
+-'  144  26  ~/myapp.py
+-'  157  22  ~/myapp.py
+-'  142  14  ~/myapp.py
+-'  205  39  ~/myapp.py
+-'  270  1  ~/myapp.py
+-'  98  15  ~/myapp.py
+-'  2  0  ~/myapp.py
+-'  213  2  ~/myapp.py
+-'  246  0  ~/myapp.py
+-'  131  7  ~/myapp.py
+-'  238  2  ~/myapp.py
+-'  215  63  ~/myapp.py
+-'  218  22  ~/myapp.py
+-'  216  13  ~/myapp.py
+-'  275  2  ~/myapp.py
+-'  225  0  ~/myapp.py
+-'  273  0  ~/myapp.py
+-'  130  0  ~/myapp.py
 -'  12  15  ~/myapp.py
 -'  340  7  ~/topology.xml
 -'  1  0  ~/topology.xml
--'  225  131  ~/myapp.py
--'  226  18  ~/myapp.py
--'  209  0  ~/myapp.py
--'  117  0  ~/myapp.py
--'  187  0  ~/myapp.py
--'  280  0  ~/myapp.py
+-'  249  18  ~/myapp.py
+-'  231  0  ~/myapp.py
+-'  115  0  ~/myapp.py
+-'  210  0  ~/myapp.py
+-'  274  0  ~/myapp.py
 -'  1  0  ~/m
--'  154  0  ~/myapp.py
--'  177  21  ~/myapp.py
--'  152  22  ~/myapp.py
--'  170  24  ~/myapp.py
--'  182  0  ~/myapp.py
--'  150  25  ~/myapp.py
--'  278  3  ~/myapp.py
--'  273  24  ~/myapp.py
--'  272  164  ~/myapp.py
--'  184  0  ~/myapp.py
--'  268  61  ~/myapp.py
--'  258  24  ~/myapp.py
--'  267  50  ~/myapp.py
--'  269  9  ~/myapp.py
+-'  177  0  ~/myapp.py
+-'  200  21  ~/myapp.py
+-'  175  22  ~/myapp.py
+-'  193  24  ~/myapp.py
+-'  173  25  ~/myapp.py
+-'  272  58  ~/myapp.py
+-'  267  24  ~/myapp.py
+-'  266  164  ~/myapp.py
+-'  207  0  ~/myapp.py
+-'  262  61  ~/myapp.py
+-'  252  24  ~/myapp.py
+-'  261  50  ~/myapp.py
+-'  263  9  ~/myapp.py
 -'  549  7  ~/topology.xml
 -'  823  7  ~/topology.xml
--'  265  25  ~/myapp.py
--'  128  40  ~/myapp.py
--'  122  65  ~/myapp.py
--'  266  61  ~/myapp.py
--'  263  80  ~/myapp.py
--'  127  65  ~/myapp.py
--'  168  0  ~/myapp.py
--'  7  8  ~/myapp.py
--'  179  86  ~/myapp.py
--'  200  0  ~/myapp.py
--'  161  52  ~/myapp.py
--'  178  42  ~/myapp.py
--'  175  63  ~/myapp.py
--'  173  21  ~/myapp.py
--'  169  10  ~/myapp.py
--'  165  37  ~/myapp.py
--'  166  21  ~/myapp.py
--'  176  15  ~/myapp.py
--'  156  71  ~/myapp.py
--'  162  12  ~/myapp.py
--'  153  34  ~/myapp.py
--'  151  54  ~/myapp.py
--'  158  53  ~/myapp.py
--'  138  58  ~/myapp.py
--'  157  33  ~/myapp.py
--'  167  24  ~/myapp.py
--'  190  2  ~/myapp.py
+-'  259  25  ~/myapp.py
+-'  126  40  ~/myapp.py
+-'  120  65  ~/myapp.py
+-'  260  61  ~/myapp.py
+-'  257  80  ~/myapp.py
+-'  125  65  ~/myapp.py
 -'  191  0  ~/myapp.py
--'  256  20  ~/myapp.py
--'  28  34  ~/myapp.py
--'  24  3  ~/myapp.py
+-'  7  8  ~/myapp.py
+-'  202  86  ~/myapp.py
+-'  222  0  ~/myapp.py
+-'  184  52  ~/myapp.py
+-'  201  42  ~/myapp.py
+-'  198  63  ~/myapp.py
+-'  196  21  ~/myapp.py
+-'  192  10  ~/myapp.py
+-'  188  37  ~/myapp.py
+-'  189  21  ~/myapp.py
+-'  199  15  ~/myapp.py
+-'  179  71  ~/myapp.py
+-'  185  12  ~/myapp.py
+-'  176  34  ~/myapp.py
+-'  174  54  ~/myapp.py
+-'  181  53  ~/myapp.py
+-'  161  58  ~/myapp.py
+-'  180  33  ~/myapp.py
+-'  190  24  ~/myapp.py
+-'  212  50  ~/myapp.py
+-'  251  20  ~/myapp.py
+-'  26  34  ~/myapp.py
+-'  22  3  ~/myapp.py
 -'  22  0  ~/path.py
 -'  1  0  ~/path.py
--'  204  7  ~/myapp.py
--'  227  0  ~/myapp.py
--'  219  149  ~/myapp.py
--'  218  63  ~/myapp.py
--'  255  2  ~/myapp.py
--'  99  32  ~/myapp.py
--'  96  65  ~/myapp.py
--'  95  28  ~/myapp.py
--'  133  3  ~/myapp.py
--'  97  45  ~/myapp.py
--'  102  0  ~/myapp.py
--'  253  0  ~/myapp.py
--'  224  55  ~/myapp.py
--'  251  138  ~/myapp.py
--'  252  15  ~/myapp.py
--'  242  27  ~/myapp.py
--'  239  0  ~/myapp.py
--'  220  49  ~/myapp.py
--'  238  5  ~/myapp.py
--'  2  0  ~/myapp.py
--'  1  0  ~/test.py
--'  1  0  ~/t
--'  222  44  ~/myapp.py
--'  27  0  ~/test.py
--'  26  49  ~/test.py
--'  22  23  ~/test.py
--'  241  0  ~/myapp.py
--'  208  9  ~/myapp.py
+-'  226  7  ~/myapp.py
+-'  241  149  ~/myapp.py
+-'  240  63  ~/myapp.py
+-'  250  2  ~/myapp.py
+-'  97  32  ~/myapp.py
+-'  94  65  ~/myapp.py
+-'  93  28  ~/myapp.py
 
 # History of marks within files (newest to oldest):
 
 > ~/myapp.py
-	"	216	2
-	^	216	3
-	.	198	2
-	+	276	4
-	+	277	4
-	+	272	244
-	+	272	97
-	+	272	172
-	+	272	123
-	+	272	103
-	+	272	164
-	+	274	6
-	+	273	152
-	+	273	24
-	+	273	0
-	+	274	0
-	+	278	0
-	+	279	4
+	"	156	1
+	^	154	12
+	.	154	11
+	+	139	77
+	+	140	97
+	+	140	16
+	+	140	99
+	+	139	65
+	+	142	10
+	+	140	114
+	+	142	18
+	+	144	26
+	+	157	22
+	+	144	26
+	+	141	2
+	+	140	96
+	+	157	6
+	+	146	67
+	+	147	52
+	+	149	67
+	+	150	57
+	+	151	27
+	+	156	12
 	+	141	0
-	+	139	27
-	+	140	2
-	+	142	49
-	+	145	100
-	+	144	49
-	+	145	121
-	+	146	4
-	+	180	0
-	+	181	0
-	+	182	0
-	+	152	24
-	+	180	0
-	+	181	0
-	+	182	0
-	+	180	0
-	+	181	0
-	+	182	0
-	+	170	25
-	+	172	0
-	+	152	23
-	+	171	26
-	+	198	0
-	+	193	0
-	+	256	2
-	+	228	0
-	+	226	2
-	+	258	0
-	+	214	0
-	+	258	0
-	+	209	2
-	+	226	0
-	+	281	2
-	+	258	2
-	+	228	2
-	+	209	0
-	+	226	18
-	+	225	131
-	+	131	18
-	+	202	0
-	+	209	2
-	+	228	0
-	+	12	16
-	+	131	0
-	+	100	0
-	+	132	0
-	+	209	0
-	+	228	2
-	+	209	2
-	+	228	0
-	+	258	0
-	+	279	0
-	+	281	0
-	+	197	0
-	+	196	22
-	+	181	0
-	+	182	0
-	+	180	0
-	+	193	4
-	+	256	0
-	+	281	2
-	+	194	13
-	+	193	63
-	+	195	24
-	+	196	22
-	+	193	63
-	+	196	22
-	+	193	63
-	+	195	24
-	+	196	22
-	+	193	63
-	+	196	22
-	+	195	24
-	+	196	22
-	+	193	63
-	+	195	24
-	+	196	22
-	+	193	63
-	+	195	24
-	+	196	22
-	+	193	63
-	+	196	22
-	+	193	63
-	+	192	0
-	+	198	2
-	e	201	0
+	+	205	0
+	+	248	0
+	+	151	5
+	+	156	6
+	+	151	24
+	+	151	35
+	+	151	54
+	+	151	1
+	+	151	26
+	+	151	36
+	+	151	26
+	+	151	38
+	+	151	26
+	+	151	66
+	+	151	24
+	+	156	0
+	+	151	35
+	+	155	5
+	+	129	0
+	+	145	47
+	+	129	0
+	+	146	1
+	+	147	1
+	+	148	2
+	+	149	3
+	+	150	4
+	+	155	5
+	+	146	0
+	+	247	12
+	+	155	6
+	+	151	0
+	+	155	1
+	+	151	13
+	+	155	13
+	+	136	43
+	+	139	66
+	+	139	92
+	+	152	5
+	+	151	44
+	+	155	25
+	+	139	79
+	+	155	2
+	+	152	45
+	+	152	55
+	+	140	0
+	+	137	15
+	+	152	57
+	+	151	15
+	+	152	6
+	+	152	46
+	+	151	6
+	+	152	46
+	+	138	9
+	+	139	31
+	+	152	46
+	+	151	6
+	+	152	46
+	+	151	1
+	+	152	57
+	+	139	45
+	+	152	46
+	+	140	0
+	+	153	12
+	+	152	110
+	+	153	14
+	+	152	6
+	+	153	17
+	+	152	16
+	+	153	18
+	+	152	20
+	+	153	22
+	+	152	16
+	+	153	1
+	+	152	1
+	+	151	1
+	+	153	12
+	+	151	2
+	+	153	19
+	+	154	11
+	e	223	0
 
 > ~/topology.xml
 	"	340	7

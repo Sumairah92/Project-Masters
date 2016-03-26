@@ -1196,3 +1196,77 @@ git commit -m "path"
 git push origin master
 clear
 exit
+vi myapp.py 
+python myapp.py 
+clear
+rm topology.xml 
+vi topology.xml
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clea
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+git status
+git add .
+git commit -m "big topo"
+git push origin master
+exit
