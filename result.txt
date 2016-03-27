@@ -1,0 +1,49 @@
+Iperf at the same time from h1 and h2 to h3 without module
+
+
+[  6] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53514
+[  4] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41191
+[  6]  0.0-10.3 sec  83.2 MBytes  67.6 Mbits/sec
+[  4]  0.0-10.1 sec  44.8 MBytes  37.2 Mbits/sec
+[  5] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41195
+[  4] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53519
+[  5]  0.0-10.8 sec  71.2 MBytes  55.5 Mbits/sec
+[  4]  0.0-10.6 sec  55.8 MBytes  44.2 Mbits/sec
+[  6] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53523
+[  4] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41200
+[  6]  0.0-10.4 sec  60.2 MBytes  48.8 Mbits/sec
+[  4]  0.0-10.1 sec  68.1 MBytes  56.6 Mbits/sec
+[  5] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53529
+[  4] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41205
+[  5]  0.0-10.4 sec  85.6 MBytes  68.7 Mbits/sec
+[  4]  0.0-10.1 sec  38.0 MBytes  31.6 Mbits/sec
+[  6] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41209
+[  4] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53533
+[  6]  0.0-10.4 sec  56.4 MBytes  45.6 Mbits/sec
+[  4]  0.0-10.1 sec  67.4 MBytes  56.0 Mbits/sec
+
+
+
+with module
+[  4] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53556
+[  5] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41233
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.4 sec  75.4 MBytes  60.7 Mbits/sec
+[  5]  0.0-10.2 sec  53.6 MBytes  44.1 Mbits/sec
+[  6] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53561
+[  4] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41237
+[  6]  0.0-10.3 sec  66.0 MBytes  53.9 Mbits/sec
+[  4]  0.0-10.1 sec  59.0 MBytes  48.9 Mbits/sec
+[  5] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53564
+[  4] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41241
+[  5]  0.0-10.5 sec  69.6 MBytes  55.5 Mbits/sec
+[  4]  0.0-10.1 sec  57.6 MBytes  47.9 Mbits/sec
+[  6] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53568
+[  4] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41245
+[  6]  0.0-10.4 sec  72.9 MBytes  58.8 Mbits/sec
+[  4]  0.0-10.1 sec  54.5 MBytes  45.5 Mbits/sec
+[  5] local 10.10.11.2 port 5001 connected with 10.10.10.1 port 41249
+[  4] local 10.10.11.2 port 5001 connected with 10.10.9.1 port 53573
+[  5]  0.0-10.5 sec  82.6 MBytes  66.0 Mbits/sec
+[  4]  0.0-10.1 sec  45.0 MBytes  37.4 Mbits/sec
+

@@ -1270,3 +1270,80 @@ git add .
 git commit -m "big topo"
 git push origin master
 exit
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+cler
+clar
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+cler
+clear
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+exit
