@@ -1347,3 +1347,308 @@ vi myapp.py
 clear
 python myapp.py 
 exit
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+vi bw.py
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi result.txt
+clear
+python myapp.py 
+vi result.txt
+clear
+vi myapp.py 
+curl -s http://%s/wm/core/switch/150.182.135.41:8080/flow/json
+curl -s http://150.182.135.41:8080/wm/core/switch/all/flow/json
+
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/all/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:0e:0a:f9:39:f5:4d/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:72:cc:7b:b0:1a:46/json
+clear
+python myapp.py 
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:72:cc:7b:b0:1a:46/json
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+vi bw.py 
+python myapp.py 
+vi bw.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+git status 
+git add .
+git commit -m "BW"
+git push origin master
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:72:cc:7b:b0:1a:46/json
+clear
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+vi myapp.py 
+clear
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:72:cc:7b:b0:1a:46/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:72:cc:7b:b0:1a:46/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:72:cc:7b:b0:1a:46/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:e2:79:38:80:7e:48/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:4a:fd:b7:b9:b9:47/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:4a:fd:b7:b9:b9:47/json
+lear
+clear
+vi myapp.py 
+curl -s http://150.182.135.41:8080/wm/core/switch/00:00:4a:fd:b7:b9:b9:47/flow/json
+clear
+curl -s http://150.182.135.41:8080/wm/core/switch/00:00:72:cc:7b:b0:1a:46/flow/json
+clear
+vi myapp.py 
+python myapp.py 
+curl -s http://150.182.135.41:8080/wm/core/switch/00:00:72:cc:7b:b0:1a:46/flow/json
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:4a:fd:b7:b9:b9:47/json
+clear
+vi myapp.py 
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:4a:fd:b7:b9:b9:47/json
+clear
+python myapp.py 
+vi myapp.py 
+python myapp.py 
+clear
+vi myapp.py 
+cp myapp.py new.py
+vi new.py 
+python new.py 
+vi new.py 
+clear
+python new.py 
+vi new.py 
+python new.py 
+vi new.py 
+clear
+python new.py 
+clear
+vi n
+vi new.py 
+python new.py 
+clear
+python new.py 
+clear
+vi new.py 
+python new.py 
+vi new.py 
+python new.py 
+vi new.py 
+clear
+python new.py 
+vi new.py 
+python new.py 
+clear
+vi myapp.py 
+python new.py 
+clear
+vi myapp.py 
+python new.py 
+vi myapp.py 
+clear
+python new.py 
+clear
+vi myapp.py 
+vi new.py 
+python new.py 
+vi new.py 
+python new.py 
+clear
+vi new.py 
+python new.py 
+clear
+vi new.py 
+python new.py 
+clear
+git status
+git add .
+git commit -m "sun"
+git push origin master
+clear
+exit

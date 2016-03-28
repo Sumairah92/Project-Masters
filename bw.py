@@ -27,3 +27,13 @@
                                 if ((flows['match']['ipv4_src'] == sourceIP) and (flows['match']['ipv4_dst'] == destIP)):
                                         return
 '''
+
+'''
+        if todelete <> None:
+                todelete = set(todelete)
+                for flow in todelete:
+                        command = "curl -X DELETE -d '{\"name\":\""+flow+"\"}' http://%s/wm/staticflowpusher/json"  % controllerIp
+                        print command
+                        result=os.popen(command).read()
+                        print result
+'''

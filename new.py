@@ -179,22 +179,24 @@ def calculate_bandwidth_for_paths(src,tgt):
                 if path == nx.shortest_path(Network, source=src, target=tgt):
                         sendpath = path
                         idx = num
+	pathFound = 0
         for num,path in enumerate(paths):
 #               if path <> nx.shortest_path(Network, source=src, target=tgt):
                 #if (len(path) < prev_path and pathBW[num] >= (0.95*pathBW[idx])):
-                if pathBW[num] >= (0.99*pathBW[idx]):
+                if pathBW[num] > (pathBW[idx]):
                         sendpath = path
                         idx = num
+			pathFound = 1
                         #prev_path = len(path)
-                else:
-                        sendpath = None
+        if pathFound == 0:
+        	sendpath = None
 	if sendpath == nx.shortest_path(Network, source=src, target=tgt):
 		sendpath = None
 	return sendpath	
 						
 
 def generate_rule_for_path(path,sourceIP,destIP):
-	todelete = list()
+#	todelete = list()
 	
 	for s in switchHostsFlows:
         	command = "curl -s http://%s/wm/staticflowpusher/list/'%s'/json" % (controllerIp,s['dpid'])
@@ -204,9 +206,10 @@ def generate_rule_for_path(path,sourceIP,destIP):
                 	for f in flows:
                         	if (flows[f]['priority'] =='3'):
                                 	if ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP)):
-						todelete.append(f)
+						return
+#						todelete.append(f)
 
-	todelete = set(todelete)
+#	todelete = set(todelete)
 	
 	flowList = list()
 	global count
@@ -239,13 +242,7 @@ def generate_rule_for_path(path,sourceIP,destIP):
 							}
 						count += 1
 						flowList.append(flow)
-	if todelete <> None:
-		todelete = set(todelete)
-		for flow in todelete:
-			command = "curl -X DELETE -d '{\"name\":\""+flow+"\"}' http://%s/wm/staticflowpusher/json"  % controllerIp
-			print command
-			result=os.popen(command).read()
-                	print result
+
 	for flow in flowList:
 		f = json.dumps(flow,separators=(',', ':'))
 		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
@@ -283,8 +280,7 @@ while True:
 						destip=flows['match']['ipv4_dst']
 						sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
 						if sendPath <> None:
-							print sendPath,s['hostName'],s['dstName']
+						#	print sendPath,s['hostName'],s['dstName']
 							generate_rule_for_path(sendPath,sourceip,destip)
-							time.sleep(2)
-	time.sleep(5)
+	time.sleep(10)
 
