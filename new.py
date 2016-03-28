@@ -166,28 +166,28 @@ def calculate_bandwidth_for_paths(src,tgt):
 					b += Bandwidth_t1[dpid+port]
 		pathBW.append(b/(len(path)-3))
 	'''
-	if paths[0] <> nx.shortest_path(Network, source=src, target=tgt):
-		prev_path = len(paths[0])
-		idx = 0
-		sendpath = paths[0]
-	else:
-		prev_path = len(paths[1])
-		idx = 1
-		sendpath = paths[1]
-	'''
-	for num,path in enumerate(paths):
-		if path == nx.shortest_path(Network, source=src, target=tgt):
-			sendpath = path
+        if paths[0] <> nx.shortest_path(Network, source=src, target=tgt):
+                prev_path = len(paths[0])
+                idx = 0
+                sendpath = paths[0]
+        else:
+                prev_path = len(paths[1])
+                idx = 1
+                sendpath = paths[1]
+        '''
+        for num,path in enumerate(paths):
+                if path == nx.shortest_path(Network, source=src, target=tgt):
+                        sendpath = path
                         idx = num
-	for num,path in enumerate(paths):
-#		if path <> nx.shortest_path(Network, source=src, target=tgt):
-		#if (len(path) < prev_path and pathBW[num] >= (0.95*pathBW[idx])):
-		if pathBW[num] >= (0.95*pathBW[idx])
-			sendpath = path
-			idx = num
-			#prev_path = len(path)
-		else:
-			sendpath = None
+        for num,path in enumerate(paths):
+#               if path <> nx.shortest_path(Network, source=src, target=tgt):
+                #if (len(path) < prev_path and pathBW[num] >= (0.95*pathBW[idx])):
+                if pathBW[num] >= (0.99*pathBW[idx]):
+                        sendpath = path
+                        idx = num
+                        #prev_path = len(path)
+                else:
+                        sendpath = None
 	if sendpath == nx.shortest_path(Network, source=src, target=tgt):
 		sendpath = None
 	return sendpath	
@@ -195,7 +195,7 @@ def calculate_bandwidth_for_paths(src,tgt):
 
 def generate_rule_for_path(path,sourceIP,destIP):
 	todelete = list()
-	'''
+	
 	for s in switchHostsFlows:
         	command = "curl -s http://%s/wm/staticflowpusher/list/'%s'/json" % (controllerIp,s['dpid'])
         	result=os.popen(command).read()
@@ -207,7 +207,7 @@ def generate_rule_for_path(path,sourceIP,destIP):
 						todelete.append(f)
 
 	todelete = set(todelete)
-	'''
+	
 	flowList = list()
 	global count
 	for i,p in enumerate(path):
@@ -224,47 +224,21 @@ def generate_rule_for_path(path,sourceIP,destIP):
 						ethdst = Network.node[nextHop]['interfaces'][i2]['MAC']
 						port = Network.node[p]['interfaces'][i]['Port']
 						
-				for s in switchHostsFlows:
-					command = "curl -s http://%s/wm/staticflowpusher/list/'%s'/json" % (controllerIp,s['dpid'])
-					result=os.popen(command).read()
-					parsedResult = json.loads(result)
-					for flows in parsedResult[s['dpid']]:
-						for f in flows:
-							if (flows[f]['priority'] =='3'):
-								if ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP) and flows[f]['actions']['actions'] == "set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port):
-									print "matches previous"					                                                				    
-								elif ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP)):
-									todelete.append(f)
 
-									flow = {
-										'switch':dpid,
-										"name":"flow_" + str(count),
-										"cookie":"0",
-										"priority":"3",
-										"eth_type":"0x0800", 
-										"ipv4_src":sourceIP,
-										"ipv4_dst":destIP,
-										 "idle_timeout":"30",
-										"active":"true",
-										"actions":"set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port
-										}
-									count += 1
-									flowList.append(flow)
-								else:
-									flow = {
-										'switch':dpid,
-										"name":"flow_" + str(count),
-										"cookie":"0",
-										"priority":"3",
-										"eth_type":"0x0800",
-										"ipv4_src":sourceIP,
-										"ipv4_dst":destIP,
-										 "idle_timeout":"30",
-										"active":"true",
-										"actions":"set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port                                                                                     
-										}
-									count += 1
-                                                                        flowList.append(flow)
+						flow = {
+							'switch':dpid,
+							"name":"flow_" + str(count),
+							"cookie":"0",
+							"priority":"3",
+							"eth_type":"0x0800", 
+							"ipv4_src":sourceIP,
+							"ipv4_dst":destIP,
+							 "idle_timeout":"10",
+							"active":"true",
+							"actions":"set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port
+							}
+						count += 1
+						flowList.append(flow)
 	if todelete <> None:
 		todelete = set(todelete)
 		for flow in todelete:
@@ -275,9 +249,9 @@ def generate_rule_for_path(path,sourceIP,destIP):
 	for flow in flowList:
 		f = json.dumps(flow,separators=(',', ':'))
 		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
-		print command
-#		result=os.popen(command).read()
-#		print result
+#		print command
+		result=os.popen(command).read()
+		print result
 		
 #---------get statistics-----------#
 
@@ -299,7 +273,7 @@ while True:
         	parsedResult = json.loads(result)				
 		for flows in parsedResult['flows']:
 			if (flows['priority'] =='1'):
-                		if (flows['match']['ipv4_src'] in s['host'] and flows['match']['ipv4_dst'] in s['dst']):
+				if (flows['match']['ipv4_src'] in s['host'] and flows['match']['ipv4_dst'] in s['dst']):
 					if (s['lastFlowHit'] == flows['packetCount']):
 						print "Polling"
 					else:
@@ -307,10 +281,10 @@ while True:
 
 						sourceip=s['host']
 						destip=flows['match']['ipv4_dst']
-			            		sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
+						sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
 						if sendPath <> None:
-						#	print sendPath,s['hostName'],s['dstName']
+							print sendPath,s['hostName'],s['dstName']
 							generate_rule_for_path(sendPath,sourceip,destip)
 							time.sleep(2)
-	time.sleep(10)
+	time.sleep(5)
 
