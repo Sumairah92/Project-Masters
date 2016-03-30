@@ -8,10 +8,19 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<result\>
+~Msle0~/\<Q\>
 
 # Command Line History (newest to oldest):
 :wq!
+:142
+:154
+:143
+:158
+:153
+:147
+:289
+:277
+:280
 :165
 :281
 :q!
@@ -52,17 +61,9 @@
 :236
 :246
 :129
-:247
-:237
-:232
-:90
-:70
-:50
-:238
-:0
-:228
 
 # Search String History (newest to oldest):
+? \<Q\>
 ? \<result\>
 ? \<pathBW\>
 ? \<print\>
@@ -77,6 +78,51 @@
 
 # Registers:
 ""1	CHAR	0
+		for nodes in Network.nodes():
+	        	if Network.node[nodes]['DPID'] is not None:
+	                	for i,interface in enumerate(Network.node[nodes]['interfaces']):
+	                        	P =  Network.node[nodes]['interfaces'][i]['Port']
+	                        	L = Network.node[nodes]['interfaces'][i]['link']
+	                                if (P <> 'local') and (L in interswitchLinks):
+	                                        command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
+	                                        result=os.popen(command).read()
+	                                        parsedResult = json.loads(result)
+	                                        for result in parsedResult:
+	                                                if (result['port'] == P):
+	                                                        Bandwidth_t1[result['dpid']+result['port']] = 50000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
+		
+"2	CHAR	0
+	#						todelete.append(f)
+	
+	#	todelete = set(todelete)
+	
+"3	CHAR	0
+	
+		
+"4	CHAR	0
+	for s in switchHostsFlows:
+	                command = "curl -s http://%s/wm/staticflowpusher/list/'%s'/json" % (controllerIp,s['dpid'])
+	                result=os.popen(command).read()
+	                parsedResult = json.loads(result)
+	                for flows in parsedResult[s['dpid']]:
+	                        for f in flows:
+	                                if (flows[f]['priority'] =='3'):
+	                                        if ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP)):
+	                                                return
+	
+"5	CHAR	0
+		'''
+	        if paths[0] <> nx.shortest_path(Network, source=src, target=tgt):
+	                prev_path = len(paths[0])
+	                idx = 0
+	                sendpath = paths[0]
+	        else:
+	                prev_path = len(paths[1])
+	                idx = 1
+	                sendpath = paths[1]
+	        '''
+	
+"6	CHAR	0
 	[  5] local 10.10.12.2 port 5001 connected with 10.10.10.1 port 34016
 	[  5]  0.0-10.3 sec  92.5 MBytes  75.5 Mbits/sec
 	[  4] local 10.10.12.2 port 5001 connected with 10.10.10.1 port 34019
@@ -84,7 +130,7 @@
 	[  4]  0.0-10.0 sec  82.1 MBytes  68.6 Mbits/sec
 	[  5]  0.0-10.8 sec  36.4 MBytes  28.1 Mbits/sec
 	
-"2	CHAR	0
+"7	CHAR	0
 	'''
 		if todelete <> None:
 			todelete = set(todelete)
@@ -94,7 +140,7 @@
 				result=os.popen(command).read()
 	                	print result
 	'''
-"3	CHAR	0
+"8	CHAR	0
 		if paths[0] <> nx.shortest_path(Network, source=src, target=tgt):
 			prev_path = len(paths[0])
 			idx = 0
@@ -110,7 +156,7 @@
 				idx = num
 				prev_path = len(path)
 	
-"4	CHAR	0
+"9	CHAR	0
 				else:
 					flow = {
 						'switch':dpid,
@@ -127,81 +173,46 @@
 					count += 1
 					flowList.append(flow)
 	
-"5	CHAR	0
-					for s in switchHostsFlows:
-						command = "curl -s http://%s/wm/staticflowpusher/list/'%s'/json" % (controllerIp,s['dpid'])
-						result=os.popen(command).read()
-						parsedResult = json.loads(result)
-						for flows in parsedResult[s['dpid']]:
-							for f in flows:
-								if (flows[f]['priority'] =='3'):
-									if ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP) and flows[f]['actions']['actions'] == "set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port):
-										print "matches previous"					                                                				    
-									elif ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP)):
-										todelete.append(f)
-	
-"6	CHAR	0
-	'''
-		for s in switchHostsFlows:
-			command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,s['dpid'])
-			result=os.popen(command).read()
-	                parsedResult = json.loads(result)
-			for flows in parsedResult['flows']:
-	                        if (flows['priority'] =='3'):
-	                                if ((flows['match']['ipv4_src'] == sourceIP) and (flows['match']['ipv4_dst'] == destIP)):
-						return
-	'
-"7	CHAR	0
-	for s in switchHostsFlows:
-		command = "curl -s http://%s/wm/staticflowpusher/list/'%s'/json" % (controllerIp,s['dpid'])
-	       	result=os.popen(command).read()
-	        parsedResult = json.loads(result)
-	        for flows in parsedResult[s['dpid']]:
-			for f in flows:
-				#print flows[f]['priority']
-	        		if (flows[f]['priority'] =='3'):
-	                		if ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP)):
-	 
-"8	CHAR	0
-	for i,f in enumerate(flows):
-				print f[i]['outPort']
-	
-"9	CHAR	0
-	'''
-	#----------Query for stats at t1----------#
-	
-		for nodes in Network.nodes():
-			if Network.node[nodes]['DPID'] is not None:
-	        		for i,interface in enumerate(Network.node[nodes]['interfaces']):
-	                		P =  Network.node[nodes]['interfaces'][i]['Port']
-					L = Network.node[nodes]['interfaces'][i]['link']
-					if (P <> 'local') and (L in interswitchLinks):
-	                			command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
-	                			result=os.popen(command).read()
-	                			parsedResult = json.loads(result)
-	                			for result in parsedResult:
-							if (result['port'] == P):
-								Bandwidth_t1[result['dpid']+result['port']] = 100000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
-	'''
-	
 "-	CHAR	0
-	 
+	#	todelete = list()
 
 # File marks:
-'0  173  0  ~/new.py
-'1  156  11  ~/new.py
-'2  1  0  ~/new.py
-'3  166  53  ~/new.py
-'4  281  9  ~/new.py
-'5  176  40  ~/new.py
-'6  1  0  ~/ne
-'7  356  7  ~/topology.xml
-'8  34  0  ~/new.py
-'9  105  29  ~/new.py
+'0  229  0  ~/newest.py
+'1  216  0  ~/newest.py
+'2  217  17  ~/newest.py
+'3  299  0  ~/newest.py
+'4  154  69  ~/newest.py
+'5  154  49  ~/newest.py
+'6  154  41  ~/newest.py
+'7  154  40  ~/newest.py
+'8  153  3  ~/newest.py
+'9  264  0  ~/newest.py
 
 # Jumplist (newest first):
--'  173  0  ~/new.py
+-'  229  0  ~/newest.py
+-'  1  0  ~/newest.py
+-'  216  0  ~/newest.py
+-'  217  17  ~/newest.py
+-'  299  0  ~/newest.py
+-'  154  69  ~/newest.py
+-'  155  3  ~/newest.py
+-'  153  3  ~/newest.py
+-'  264  0  ~/newest.py
+-'  174  3  ~/newest.py
+-'  297  7  ~/newest.py
+-'  288  6  ~/newest.py
+-'  148  4  ~/newest.py
+-'  149  7  ~/newest.py
+-'  177  0  ~/newest.py
+-'  194  0  ~/newest.py
+-'  137  63  ~/newest.py
+-'  152  2  ~/newest.py
+-'  295  5  ~/newest.py
+-'  209  0  ~/newest.py
+-'  183  2  ~/newest.py
+-'  127  0  ~/new.py
 -'  1  0  ~/new.py
+-'  173  0  ~/new.py
 -'  156  11  ~/new.py
 -'  166  53  ~/new.py
 -'  281  9  ~/new.py
@@ -276,33 +287,116 @@
 -'  242  9  ~/myapp.py
 -'  282  0  ~/myapp.py
 -'  167  122  ~/myapp.py
--'  193  23  ~/myapp.py
--'  174  26  ~/myapp.py
--'  165  58  ~/myapp.py
--'  183  66  ~/myapp.py
--'  182  0  ~/myapp.py
--'  138  15  ~/myapp.py
--'  166  84  ~/myapp.py
--'  155  6  ~/myapp.py
--'  163  6  ~/myapp.py
--'  154  45  ~/myapp.py
--'  136  53  ~/myapp.py
--'  160  0  ~/myapp.py
--'  159  47  ~/myapp.py
--'  129  0  ~/myapp.py
--'  157  34  ~/myapp.py
--'  158  26  ~/myapp.py
--'  156  14  ~/myapp.py
--'  281  39  ~/myapp.py
--'  98  15  ~/myapp.py
--'  2  0  ~/myapp.py
--'  131  7  ~/myapp.py
--'  317  2  ~/myapp.py
 
 # History of marks within files (newest to oldest):
 
+> ~/newest.py
+	"	229	0
+	^	175	1
+	.	194	0
+	+	262	0
+	+	149	7
+	+	143	58
+	+	144	41
+	+	147	86
+	+	144	19
+	+	145	33
+	+	147	35
+	+	147	35
+	+	149	12
+	+	148	1
+	+	144	2
+	+	148	24
+	+	148	32
+	+	148	4
+	+	177	2
+	+	194	1
+	+	296	7
+	+	297	6
+	+	262	2
+	+	263	2
+	+	264	2
+	+	143	75
+	+	297	4
+	+	296	7
+	+	297	7
+	+	147	41
+	+	144	0
+	+	149	0
+	+	151	71
+	+	142	97
+	+	151	104
+	+	152	9
+	+	174	3
+	+	147	28
+	+	146	22
+	+	158	0
+	+	156	29
+	+	157	29
+	+	158	29
+	+	155	19
+	+	156	40
+	+	153	46
+	+	155	19
+	+	156	40
+	+	157	47
+	+	158	59
+	+	159	3
+	+	154	35
+	+	157	49
+	+	158	60
+	+	162	6
+	+	175	0
+	+	263	0
+	+	264	0
+	+	153	4
+	+	155	3
+	+	156	24
+	+	157	24
+	+	158	24
+	+	159	3
+	+	160	3
+	+	154	76
+	+	154	40
+	+	154	26
+	+	154	79
+	+	154	49
+	+	149	9
+	+	154	70
+	+	154	35
+	+	154	31
+	+	154	32
+	+	154	50
+	+	154	32
+	+	155	3
+	+	156	24
+	+	157	24
+	+	158	24
+	+	159	3
+	+	160	3
+	+	149	9
+	+	153	118
+	+	174	0
+	+	176	0
+	+	175	0
+	+	173	110
+	+	162	2
+	+	163	17
+	+	164	25
+	+	165	33
+	+	166	33
+	+	167	33
+	+	168	41
+	+	169	41
+	+	170	41
+	+	171	42
+	+	172	49
+	+	173	57
+	+	175	0
+	+	194	0
+
 > ~/new.py
-	"	173	0
+	"	127	0
 	^	173	1
 	.	173	0
 	+	237	0

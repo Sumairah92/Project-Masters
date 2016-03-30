@@ -1652,3 +1652,36 @@ git commit -m "sun"
 git push origin master
 clear
 exit
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:4a:fd:b7:b9:b9:47/json
+clear
+curl -s http://150.182.135.41:8080/wm/staticflowpusher/list/00:00:4a:fd:b7:b9:b9:47/json | python -m json.tool
+clear
+vi new.py 
+python new.py 
+vi new.py 
+rm topology.xml 
+vi topology.xml
+python new.py 
+clear
+vi ne
+vi new.py 
+python new.py 
+vi new.py 
+python new.py 
+vi new.py 
+clear
+vi new.py 
+python new.py 
+vi new.py 
+clear
+python new.py 
+clear
+vi new.py 
+clear
+git status
+git add .
+git commit -m "min link bw'
+"
+git push origin master
+clear
+exit
