@@ -9,7 +9,7 @@ import networkx as nx
 
 #Declare variables
 
-controllerIp = '150.182.135.41:8080'
+controllerIp = '150.182.135.50:8080'
 dpids = list()
 edges = list()
 interfaces = list()
@@ -149,10 +149,11 @@ def calculate_bandwidth_for_paths(src,tgt):
                                         parsedResult = json.loads(result)
                                         for result in parsedResult:
                                                 if (result['port'] == P):
-                                                        Bandwidth_t1[result['dpid']+result['port']] = 100000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
+                                                        Bandwidth_t1[result['dpid']+result['port']] = 50000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
 
 	for num,path in enumerate(paths):
 		b = 0
+#		print path
 		for i,hop in enumerate(path):
 			if "s" in hop:
 				dpid=Network.node[hop]['DPID']
@@ -163,8 +164,13 @@ def calculate_bandwidth_for_paths(src,tgt):
 						for x2,interface2 in enumerate(Network.node[nextHop]['interfaces']):
 							if (Network.node[nextHop]['interfaces'][x2]['link'] == L):		
 								port = Network.node[hop]['interfaces'][x]['Port']
-					b += Bandwidth_t1[dpid+port]
-		pathBW.append(b/(len(path)-3))
+					if (b == 0):
+						b = Bandwidth_t1[dpid+port]
+					else:
+						if (b > Bandwidth_t1[dpid+port]):
+							b = Bandwidth_t1[dpid+port]
+		pathBW.append(b)
+#	print pathBW
 	'''
         if paths[0] <> nx.shortest_path(Network, source=src, target=tgt):
                 prev_path = len(paths[0])
@@ -272,15 +278,15 @@ while True:
 			if (flows['priority'] =='1'):
 				if (flows['match']['ipv4_src'] in s['host'] and flows['match']['ipv4_dst'] in s['dst']):
 					if (s['lastFlowHit'] == flows['packetCount']):
-						print "Polling"
+						pass#print "Polling"
 					else:
 						s['lastFlowHit'] = flows['packetCount']
 
 						sourceip=s['host']
 						destip=flows['match']['ipv4_dst']
 						sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
-						if sendPath <> None:
+						#if sendPath <> None:
 						#	print sendPath,s['hostName'],s['dstName']
-							generate_rule_for_path(sendPath,sourceip,destip)
+						#	generate_rule_for_path(sendPath,sourceip,destip)
 	time.sleep(10)
 
