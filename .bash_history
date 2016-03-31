@@ -1685,3 +1685,8 @@ git commit -m "min link bw'
 git push origin master
 clear
 exit
+git status
+git add .
+git commit -m "new"
+git push origin master
+exit

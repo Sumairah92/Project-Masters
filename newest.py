@@ -138,7 +138,7 @@ def calculate_bandwidth_for_paths(src,tgt):
 	paths = list(nx.all_simple_paths(Network, source=src, target=tgt))
 	pathBW = list()
 	if len(paths) == 1:
-		return
+		return None
 	if not QoSFlowsList: # No QoS Flow exists, Add the shortest path as a QoS Flow for the first flow 
 		path = nx.shortest_path(Network, source=src, target=tgt)
 		Q = { 'src' : src,
@@ -150,7 +150,7 @@ def calculate_bandwidth_for_paths(src,tgt):
 		return path
 	for q in QoSFlowsList:
 		if (q['src'] == src and q['tgt'] == tgt):  # A QoS Flow already exists for this source-destination pair
-			return
+			return None
 		elif (q['src'] == tgt and q['tgt'] == src):	# A QoS Flow exists for the reverse path for this source-destination pair
 			reversePath = q['path'][::-1]
 			Q = { 'src' : src,
@@ -158,61 +158,71 @@ def calculate_bandwidth_for_paths(src,tgt):
                               'path' : reversePath,
                               'pathMatch' : reversePath[1:-1]}
 			QoSFlowsList.append(Q)
-#			print QoSFlowsList
+		#	print QoSFlowsList
 			return reversePath
 		else:
-			for nodes in Network.nodes():
-                		if Network.node[nodes]['DPID'] is not None:
-                        		for i,interface in enumerate(Network.node[nodes]['interfaces']):
-                                		P =  Network.node[nodes]['interfaces'][i]['Port']
-                                		L = Network.node[nodes]['interfaces'][i]['link']
-                                		if (P <> 'local') and (L in interswitchLinks):
-                                        		command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
-                                        		result=os.popen(command).read()
-                                        		parsedResult = json.loads(result)
-                                        		for result in parsedResult:
-                                                		if (result['port'] == P):
-                                                        		Bandwidth_t1[result['dpid']+result['port']] = 50000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
-	
-			for num,path in enumerate(paths):
-				b = 0
-				#print path
-				for i,hop in enumerate(path):
-					if "s" in hop:
-						dpid=Network.node[hop]['DPID']
-						if (i+1) < len(path)-1:
-							nextHop = path[i+1]
-							for x,interface in enumerate(Network.node[hop]['interfaces']):
-								L = Network.node[hop]['interfaces'][x]['link']
-								for x2,interface2 in enumerate(Network.node[nextHop]['interfaces']):
-									if (Network.node[nextHop]['interfaces'][x2]['link'] == L):		
-										port = Network.node[hop]['interfaces'][x]['Port']
-							if (b == 0):
-								b = Bandwidth_t1[dpid+port]
-							else:
-								if (b > Bandwidth_t1[dpid+port]):
-									b = Bandwidth_t1[dpid+port]
-				pathBW.append(b)
-			#print pathBW
-			for num,path in enumerate(paths):
-				if path == nx.shortest_path(Network, source=src, target=tgt):
-					sendpath = path
-					idx = num
-			pathFound = 0
-			for num,path in enumerate(paths):
-		#               if path <> nx.shortest_path(Network, source=src, target=tgt):
-				#if (len(path) < prev_path and pathBW[num] >= (0.95*pathBW[idx])):
-				if pathBW[num] > (pathBW[idx]):
-					sendpath = path
+			continue
+	for nodes in Network.nodes():
+		if Network.node[nodes]['DPID'] is not None:
+			for i,interface in enumerate(Network.node[nodes]['interfaces']):
+				P =  Network.node[nodes]['interfaces'][i]['Port']
+				L = Network.node[nodes]['interfaces'][i]['link']
+				if (P <> 'local') and (L in interswitchLinks):
+					command = "curl http://%s/wm/statistics/bandwidth/'%s'/'%s'/json" % (controllerIp, Network.node[nodes]['DPID'],P)
+					result=os.popen(command).read()
+					parsedResult = json.loads(result)
+					for result in parsedResult:
+						if (result['port'] == P):
+							Bandwidth_t1[result['dpid']+result['port']] = 50000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
+
+	for num,path in enumerate(paths):
+		b = 0
+		for i,hop in enumerate(path):
+			if "s" in hop:
+				dpid=Network.node[hop]['DPID']
+				if (i+1) < len(path)-1:
+					nextHop = path[i+1]
+					for x,interface in enumerate(Network.node[hop]['interfaces']):
+						L = Network.node[hop]['interfaces'][x]['link']
+						for x2,interface2 in enumerate(Network.node[nextHop]['interfaces']):
+							if (Network.node[nextHop]['interfaces'][x2]['link'] == L):		
+								port = Network.node[hop]['interfaces'][x]['Port']
+					if (b == 0):
+						b = Bandwidth_t1[dpid+port]
+					else:
+						if (b > Bandwidth_t1[dpid+port]):
+							b = Bandwidth_t1[dpid+port]
+		pathBW.append(b)
+	#print pathBW
+	pathFound = 0
+	idx = 0
+	for num,path in enumerate(paths):
+		validPath = 1
+                for q in QoSFlowsList:
+                        if path[1:-1] == q['pathMatch']:
+                                validPath = 0
+		if (validPath == 1):
+			if (idx == 0):
+				sendPath = path
+				idx = num
+				prev_path = len(path)
+				pathFound = 1
+			else:
+				if (len(path) < prev_path and pathBW[num] >= (0.95* pathBW[idx])):
+					sendPath = path
 					idx = num
 					pathFound = 1
-					#prev_path = len(path)
-			if pathFound == 0:
-				sendpath = None
-			if sendpath == nx.shortest_path(Network, source=src, target=tgt):
-				sendpath = None
-			return sendpath	
-						
+		else:
+			continue
+	if pathFound == 0:
+                sendPath = None
+	else:
+		Q = { 'src' : src,
+                      'tgt' : tgt,
+                      'path' : sendPath,
+                      'pathMatch' : sendPath[1:-1]}
+		QoSFlowsList.append(Q)
+        return sendPath
 
 def generate_rule_for_path(path,sourceIP,destIP):
 
@@ -261,9 +271,9 @@ def generate_rule_for_path(path,sourceIP,destIP):
 	for flow in flowList:
 		f = json.dumps(flow,separators=(',', ':'))
 		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
-		print command
-#		result=os.popen(command).read()
-#		print result
+#		print command
+		result=os.popen(command).read()
+		print result
 		
 #---------get statistics-----------#
 
@@ -296,6 +306,6 @@ while True:
 						sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
 						if sendPath <> None:
 							print sendPath,s['hostName'],s['dstName']
-		#					generate_rule_for_path(sendPath,sourceip,destip)
+							generate_rule_for_path(sendPath,sourceip,destip)
 	time.sleep(10)
 

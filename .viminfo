@@ -12,6 +12,13 @@
 
 # Command Line History (newest to oldest):
 :wq!
+:200
+:190
+:180
+:226
+:205
+::180
+:201
 :142
 :154
 :143
@@ -38,7 +45,6 @@
 :251
 :260
 :160
-:200
 :235
 :240
 :152
@@ -49,18 +55,12 @@
 :130
 :140
 :259
-:190
 :195
 :196
 :278
 :222
 :100
 :263
-:256
-:230
-:236
-:246
-:129
 
 # Search String History (newest to oldest):
 ? \<Q\>
@@ -78,6 +78,42 @@
 
 # Registers:
 ""1	CHAR	0
+	'''
+		for num,path in enumerate(paths):
+	#               if path <> nx.shortest_path(Network, source=src, target=tgt):
+			#if (len(path) < prev_path and pathBW[num] >= (0.95*pathBW[idx])):
+			if pathBW[num] > (pathBW[idx]):
+				sendpath = path
+				idx = num
+				pathFound = 1
+				#prev_path = len(path)
+	
+		if pathFound == 0:
+			sendpath = None
+	#	if sendpath == nx.shortest_path(Network, source=src, target=tgt):
+	#		sendpath = None
+		return sendpath							
+	'''
+	
+"2	CHAR	0
+	#       if sendpath == nx.shortest_path(Network, source=src, target=tgt):
+	#               sendpath = None
+	
+"3	CHAR	0
+	validPath = 1
+			for q in QoSFlowsList:
+				if path[1:-1] == q['pathMatch']:
+					validPath = 0
+			
+	
+"4	CHAR	0
+		else:
+				continue
+	
+"5	CHAR	0
+	if (validPath == 1):
+		#		print path					
+"6	CHAR	0
 		for nodes in Network.nodes():
 	        	if Network.node[nodes]['DPID'] is not None:
 	                	for i,interface in enumerate(Network.node[nodes]['interfaces']):
@@ -91,15 +127,15 @@
 	                                                if (result['port'] == P):
 	                                                        Bandwidth_t1[result['dpid']+result['port']] = 50000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
 		
-"2	CHAR	0
+"7	CHAR	0
 	#						todelete.append(f)
 	
 	#	todelete = set(todelete)
 	
-"3	CHAR	0
+"8	CHAR	0
 	
 		
-"4	CHAR	0
+"9	CHAR	0
 	for s in switchHostsFlows:
 	                command = "curl -s http://%s/wm/staticflowpusher/list/'%s'/json" % (controllerIp,s['dpid'])
 	                result=os.popen(command).read()
@@ -110,107 +146,51 @@
 	                                        if ((flows[f]['match']['ipv4_src'] == sourceIP) and (flows[f]['match']['ipv4_dst'] == destIP)):
 	                                                return
 	
-"5	CHAR	0
-		'''
-	        if paths[0] <> nx.shortest_path(Network, source=src, target=tgt):
-	                prev_path = len(paths[0])
-	                idx = 0
-	                sendpath = paths[0]
-	        else:
-	                prev_path = len(paths[1])
-	                idx = 1
-	                sendpath = paths[1]
-	        '''
-	
-"6	CHAR	0
-	[  5] local 10.10.12.2 port 5001 connected with 10.10.10.1 port 34016
-	[  5]  0.0-10.3 sec  92.5 MBytes  75.5 Mbits/sec
-	[  4] local 10.10.12.2 port 5001 connected with 10.10.10.1 port 34019
-	[  5] local 10.10.12.2 port 5001 connected with 10.10.9.1 port 45985
-	[  4]  0.0-10.0 sec  82.1 MBytes  68.6 Mbits/sec
-	[  5]  0.0-10.8 sec  36.4 MBytes  28.1 Mbits/sec
-	
-"7	CHAR	0
-	'''
-		if todelete <> None:
-			todelete = set(todelete)
-			for flow in todelete:
-				command = "curl -X DELETE -d '{\"name\":\""+flow+"\"}' http://%s/wm/staticflowpusher/json"  % controllerIp
-				print command
-				result=os.popen(command).read()
-	                	print result
-	'''
-"8	CHAR	0
-		if paths[0] <> nx.shortest_path(Network, source=src, target=tgt):
-			prev_path = len(paths[0])
-			idx = 0
-			sendpath = paths[0]
-		else:
-			prev_path = len(paths[1])
-			idx = 1
-			sendpath = paths[1]
-		for num,path in enumerate(paths):
-	#		if path <> nx.shortest_path(Network, source=src, target=tgt):
-			if (len(path) < prev_path and pathBW[num] >= (0.99*pathBW[idx])):
-				sendpath = path
-				idx = num
-				prev_path = len(path)
-	
-"9	CHAR	0
-				else:
-					flow = {
-						'switch':dpid,
-						"name":"flow_" + str(count),
-						"cookie":"0",
-						"priority":"3",
-						"eth_type":"0x0800",
-						"ipv4_src":sourceIP,
-						"ipv4_dst":destIP,
-						 "idle_timeout":"30",
-						"active":"true",
-						"actions":"set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port                                                                                     
-						}
-					count += 1
-					flowList.append(flow)
-	
 "-	CHAR	0
 	#	todelete = list()
 
 # File marks:
-'0  26  0  ~/newest.py
-'1  299  6  ~/newest.py
-'2  161  20  ~/newest.py
-'3  231  0  ~/newest.py
-'4  218  0  ~/newest.py
-'5  219  17  ~/newest.py
-'6  301  0  ~/newest.py
-'7  155  69  ~/newest.py
-'8  155  49  ~/newest.py
-'9  155  41  ~/newest.py
+'0  311  0  ~/newest.py
+'1  309  0  ~/newest.py
+'2  276  0  ~/newest.py
+'3  135  8  ~/newest.py
+'4  224  1  ~/newest.py
+'5  226  0  ~/newest.py
+'6  232  26  ~/newest.py
+'7  214  45  ~/newest.py
+'8  226  1  ~/newest.py
+'9  196  0  ~/newest.py
 
 # Jumplist (newest first):
--'  26  0  ~/newest.py
+-'  311  0  ~/newest.py
 -'  1  0  ~/newest.py
--'  299  6  ~/newest.py
--'  161  20  ~/newest.py
--'  231  0  ~/newest.py
--'  218  0  ~/newest.py
--'  219  17  ~/newest.py
--'  301  0  ~/newest.py
+-'  309  0  ~/newest.py
+-'  276  0  ~/newest.py
+-'  135  8  ~/newest.py
+-'  224  1  ~/newest.py
+-'  226  0  ~/newest.py
+-'  232  26  ~/newest.py
+-'  214  45  ~/newest.py
+-'  196  0  ~/newest.py
+-'  180  21  ~/newest.py
+-'  161  2  ~/newest.py
+-'  194  7  ~/newest.py
+-'  242  13  ~/newest.py
+-'  102  15  ~/newest.py
+-'  26  0  ~/newest.py
+-'  241  0  ~/newest.py
+-'  228  0  ~/newest.py
+-'  229  17  ~/newest.py
 -'  155  69  ~/newest.py
 -'  156  3  ~/newest.py
 -'  154  3  ~/newest.py
--'  266  0  ~/newest.py
--'  176  3  ~/newest.py
--'  290  6  ~/newest.py
+-'  177  3  ~/newest.py
+-'  300  6  ~/newest.py
 -'  148  4  ~/newest.py
 -'  150  7  ~/newest.py
--'  179  0  ~/newest.py
--'  196  0  ~/newest.py
 -'  137  63  ~/newest.py
 -'  153  2  ~/newest.py
--'  297  5  ~/newest.py
--'  211  0  ~/newest.py
+-'  307  5  ~/newest.py
 -'  185  2  ~/newest.py
 -'  127  0  ~/new.py
 -'  1  0  ~/new.py
@@ -275,125 +255,113 @@
 -'  241  0  ~/myapp.py
 -'  329  47  ~/result.txt
 -'  330  0  ~/result.txt
--'  313  0  ~/myapp.py
--'  16  2  ~/bw.py
--'  295  0  ~/myapp.py
--'  214  0  ~/myapp.py
--'  312  47  ~/myapp.py
--'  192  16  ~/myapp.py
--'  306  44  ~/myapp.py
--'  309  38  ~/myapp.py
--'  280  0  ~/myapp.py
--'  246  6  ~/myapp.py
--'  310  87  ~/myapp.py
--'  242  9  ~/myapp.py
 
 # History of marks within files (newest to oldest):
 
 > ~/newest.py
-	"	26	0
-	^	26	0
-	.	299	2
-	+	144	2
-	+	148	24
-	+	148	32
-	+	148	4
-	+	179	2
+	"	311	0
+	^	309	0
+	.	309	0
+	+	180	26
+	+	180	2
+	+	195	0
+	+	226	2
 	+	196	1
-	+	298	7
-	+	299	6
-	+	264	2
-	+	265	2
-	+	266	2
-	+	143	75
-	+	299	4
-	+	298	7
-	+	299	7
-	+	147	41
-	+	144	0
-	+	150	0
-	+	152	71
-	+	142	97
-	+	152	104
-	+	153	9
-	+	176	3
-	+	147	28
-	+	146	22
-	+	159	0
-	+	157	29
-	+	158	29
-	+	159	29
-	+	156	19
-	+	157	40
-	+	154	46
-	+	156	19
-	+	157	40
-	+	158	47
-	+	159	59
-	+	160	3
-	+	155	35
-	+	158	49
-	+	159	60
-	+	164	6
-	+	177	0
-	+	265	0
-	+	266	0
-	+	154	4
-	+	156	3
-	+	157	24
-	+	158	24
-	+	159	24
-	+	160	3
-	+	162	3
-	+	155	76
-	+	155	40
-	+	155	26
-	+	155	79
-	+	155	49
-	+	150	9
-	+	155	70
-	+	155	35
-	+	155	31
-	+	155	32
-	+	155	50
-	+	155	32
-	+	156	3
-	+	157	24
-	+	158	24
-	+	159	24
-	+	160	3
-	+	162	3
-	+	150	9
-	+	154	118
-	+	176	0
-	+	178	0
-	+	177	0
-	+	175	110
-	+	164	2
-	+	165	17
-	+	166	25
-	+	167	33
-	+	168	33
-	+	169	33
-	+	170	41
-	+	171	41
-	+	172	41
-	+	173	42
-	+	174	49
-	+	175	57
-	+	177	0
+	+	226	20
+	+	226	38
+	+	196	13
+	+	226	23
+	+	196	1
+	+	199	0
+	+	164	10
+	+	165	0
+	+	226	1
+	+	199	2
+	+	226	18
+	+	194	7
+	+	180	16
 	+	196	0
-	+	149	19
-	+	161	20
-	+	149	0
-	+	161	0
-	+	265	0
-	+	266	0
-	+	299	7
-	+	265	0
-	+	266	0
-	+	264	2
-	+	299	2
+	+	196	2
+	+	161	3
+	+	180	20
+	+	180	18
+	+	180	2
+	+	180	14
+	+	180	20
+	+	180	18
+	+	199	0
+	+	226	23
+	+	204	21
+	+	214	23
+	+	214	88
+	+	214	117
+	+	216	10
+	+	197	13
+	+	226	0
+	+	214	46
+	+	226	2
+	+	226	25
+	+	196	2
+	+	180	5
+	+	214	39
+	+	180	2
+	+	180	2
+	+	197	0
+	+	195	2
+	+	181	0
+	+	180	0
+	+	196	2
+	+	195	2
+	+	196	1
+	+	161	2
+	+	214	45
+	+	214	20
+	+	204	0
+	+	198	7
+	+	207	12
+	+	211	35
+	+	214	0
+	+	212	4
+	+	213	0
+	+	209	16
+	+	214	21
+	+	215	0
+	+	226	2
+	+	226	23
+	+	226	0
+	+	226	0
+	+	205	12
+	+	225	0
+	+	226	2
+	+	226	0
+	+	223	51
+	+	221	22
+	+	222	22
+	+	223	21
+	+	206	8
+	+	212	9
+	+	218	20
+	+	225	19
+	+	222	34
+	+	223	39
+	+	224	1
+	+	196	1
+	+	208	24
+	+	211	67
+	+	220	0
+	+	228	0
+	+	226	0
+	+	309	0
+	+	275	0
+	+	276	0
+	+	141	12
+	+	153	13
+	+	275	0
+	+	276	0
+	+	309	0
+	+	275	0
+	+	276	0
+	+	309	0
 
 > ~/new.py
 	"	127	0
