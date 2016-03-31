@@ -146,6 +146,7 @@ def calculate_bandwidth_for_paths(src,tgt):
 		       'path' : path,
                        'pathMatch' : path[1:-1]}
 		QoSFlowsList.append(Q)
+#		print QoSFlowsList
 		return path
 	for q in QoSFlowsList:
 		if (q['src'] == src and q['tgt'] == tgt):  # A QoS Flow already exists for this source-destination pair
@@ -157,6 +158,7 @@ def calculate_bandwidth_for_paths(src,tgt):
                               'path' : reversePath,
                               'pathMatch' : reversePath[1:-1]}
 			QoSFlowsList.append(Q)
+#			print QoSFlowsList
 			return reversePath
 		else:
 			for nodes in Network.nodes():
@@ -259,7 +261,7 @@ def generate_rule_for_path(path,sourceIP,destIP):
 	for flow in flowList:
 		f = json.dumps(flow,separators=(',', ':'))
 		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
-		#print command
+		print command
 #		result=os.popen(command).read()
 #		print result
 		
@@ -294,6 +296,6 @@ while True:
 						sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
 						if sendPath <> None:
 							print sendPath,s['hostName'],s['dstName']
-							#generate_rule_for_path(sendPath,sourceip,destip)
+		#					generate_rule_for_path(sendPath,sourceip,destip)
 	time.sleep(10)
 
