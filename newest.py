@@ -6,6 +6,8 @@ import untangle
 import time
 import re
 import networkx as nx
+import signal
+import sys
 
 #Declare variables
 
@@ -19,6 +21,7 @@ Network = nx.Graph()
 Bandwidth_t1 = dict()
 switchHostsFlows=list()
 QoSFlowsList = list()
+toDelete = list()
 
 # Get switch and link information from the controller
 
@@ -133,6 +136,14 @@ for d in dpids:
 
 print "Topology created"
 count = 0
+
+def delete_rules(signal, frame):
+	for flow in toDelete:
+		command = "curl -X DELETE -d '{\"name\":\""+flow+"\"}' http://%s/wm/staticflowpusher/json"  % controllerIp
+		print command
+		result=os.popen(command).read()
+                print result
+	sys.exit(0)
 
 def calculate_bandwidth_for_paths(src,tgt):
 	paths = list(nx.all_simple_paths(Network, source=src, target=tgt))
@@ -269,11 +280,12 @@ def generate_rule_for_path(path,sourceIP,destIP):
 						flowList.append(flow)
 
 	for flow in flowList:
+		toDelete.append(flow['name'])
 		f = json.dumps(flow,separators=(',', ':'))
 		command = "curl -X POST -d '"+f+"' http://%s/wm/staticflowpusher/json" % controllerIp
 #		print command
 		result=os.popen(command).read()
-		print result
+		#print result
 		
 #---------get statistics-----------#
 
@@ -286,13 +298,15 @@ print "Preparing for querying statistics"
 command = "curl -X POST -d '' http://%s/wm/statistics/config/enable/json" % controllerIp
 os.popen(command).read()
 
-                      		 	
+#signal.signal(signal.SIGINT,delete_rules)
+                   		 	
 while True:
+	signal.signal(signal.SIGINT,delete_rules)
 #-------Poll switches to see which flows are active-----#	
 	for s in switchHostsFlows:
 		command = "curl -s http://%s/wm/core/switch/'%s'/flow/json" % (controllerIp,s['dpid'])
 		result=os.popen(command).read()
-        	parsedResult = json.loads(result)				
+		parsedResult = json.loads(result)				
 		for flows in parsedResult['flows']:
 			if (flows['priority'] =='1'):
 				if (flows['match']['ipv4_src'] in s['host'] and flows['match']['ipv4_dst'] in s['dst']):
@@ -305,7 +319,7 @@ while True:
 						destip=flows['match']['ipv4_dst']
 						sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
 						if sendPath <> None:
-							print sendPath,s['hostName'],s['dstName']
+		#					print sendPath,s['hostName'],s['dstName']
 							generate_rule_for_path(sendPath,sourceip,destip)
 	time.sleep(10)
 
