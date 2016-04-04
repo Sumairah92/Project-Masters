@@ -1692,3 +1692,27 @@ git push origin master
 exit
 python newest.py 
 clear
+vi newest.py 
+python myapp.py 
+python newest.py 
+clear
+vi newest.py 
+python newest.py 
+vi newest.py 
+python newest.py 
+vi newest.py 
+python newest.py 
+vi newest.py 
+clear
+python newest.py 
+vi newest.py 
+clear
+python newest.py 
+clear
+vi newest.py 
+git status
+git add .
+git commit -m "quit"
+git push origin master
+clear
+exit

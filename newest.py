@@ -207,6 +207,7 @@ def calculate_bandwidth_for_paths(src,tgt):
 	#print pathBW
 	pathFound = 0
 	idx = 0
+	sendPath = None
 	for num,path in enumerate(paths):
 		validPath = 1
                 for q in QoSFlowsList:
@@ -222,11 +223,12 @@ def calculate_bandwidth_for_paths(src,tgt):
 				if (len(path) < prev_path and pathBW[num] >= (0.95* pathBW[idx])):
 					sendPath = path
 					idx = num
+					prev_path = len(path)
 					pathFound = 1
 		else:
 			continue
 	if pathFound == 0:
-                sendPath = None
+              	sendPath = None
 	else:
 		Q = { 'src' : src,
                       'tgt' : tgt,
@@ -272,7 +274,6 @@ def generate_rule_for_path(path,sourceIP,destIP):
 							"eth_type":"0x0800", 
 							"ipv4_src":sourceIP,
 							"ipv4_dst":destIP,
-							 "idle_timeout":"100",
 							"active":"true",
 							"actions":"set_eth_src="+ethsrc+",set_eth_dst="+ethdst+",output="+port
 							}
@@ -319,7 +320,7 @@ while True:
 						destip=flows['match']['ipv4_dst']
 						sendPath = calculate_bandwidth_for_paths(s['hostName'],s['dstName'])
 						if sendPath <> None:
-		#					print sendPath,s['hostName'],s['dstName']
+							print sendPath,s['hostName'],s['dstName']
 							generate_rule_for_path(sendPath,sourceip,destip)
 	time.sleep(10)
 
