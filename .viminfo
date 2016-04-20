@@ -8,10 +8,11 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<Q\>
+~Msle0~/\<import\>
 
 # Command Line History (newest to oldest):
 :wq!
+:q!
 :140
 :139
 :200
@@ -32,7 +33,6 @@
 :280
 :165
 :281
-:q!
 :71
 :254
 :250
@@ -63,6 +63,7 @@
 :100
 
 # Search String History (newest to oldest):
+? \<import\>
 ? \<Q\>
 ? \<result\>
 ? \<pathBW\>
@@ -78,9 +79,31 @@
 
 # Registers:
 ""1	CHAR	0
+	    <interface client_id="interface-1" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3899" mac_address="02f867d07885">
+	      <ip address="10.10.1.2" type="ipv4"/>
+	    </interface>
+	    <interface client_id="interface-3" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3902" mac_address="02b3bfc0ae40">
+	      <ip address="10.10.2.2" type="ipv4"/>
+	    </interface>
+	    <interface client_id="interface-8" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3910" mac_address="02a502968d89">
+	      <ip address="10.10.5.1" type="ipv4"/>
+	    </interface>
+	    <interface client_id="interface-18" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3925" mac_address="029e7076d105">
+	      <ip address="10.10.10.1" type="ipv4"/>
+	    </interface>
+	    <interface client_id="interface-20" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3928" mac_address="02dd2b7fb3a3">
+	      <ip address="10.10.11.1" type="ipv4"/>
+	    </interface>
+	   
+"2	CHAR	0
+	except:
+		print "error in reading file"
+		sys.exit(0)
+	
+"3	CHAR	0
 	run_program()
 	def run_program():   
-"2	CHAR	0
+"4	CHAR	0
 	'''
 		for num,path in enumerate(paths):
 	#               if path <> nx.shortest_path(Network, source=src, target=tgt):
@@ -98,25 +121,25 @@
 		return sendpath							
 	'''
 	
-"3	CHAR	0
+"5	CHAR	0
 	#       if sendpath == nx.shortest_path(Network, source=src, target=tgt):
 	#               sendpath = None
 	
-"4	CHAR	0
+"6	CHAR	0
 	validPath = 1
 			for q in QoSFlowsList:
 				if path[1:-1] == q['pathMatch']:
 					validPath = 0
 			
 	
-"5	CHAR	0
+"7	CHAR	0
 		else:
 				continue
 	
-"6	CHAR	0
+"8	CHAR	0
 	if (validPath == 1):
 		#		print path					
-"7	CHAR	0
+"9	CHAR	0
 		for nodes in Network.nodes():
 	        	if Network.node[nodes]['DPID'] is not None:
 	                	for i,interface in enumerate(Network.node[nodes]['interfaces']):
@@ -130,74 +153,92 @@
 	                                                if (result['port'] == P):
 	                                                        Bandwidth_t1[result['dpid']+result['port']] = 50000000-(int(result['bits-per-second-tx'])+int(result['bits-per-second-rx']))
 		
-"8	CHAR	0
-	#						todelete.append(f)
-	
-	#	todelete = set(todelete)
-	
-"9	CHAR	0
-	
-		
 "-	CHAR	0
 	#	todelete = list()
 
 # File marks:
-'0  234  0  ~/newest.py
-'1  221  3  ~/newest.py
-'2  230  18  ~/newest.py
-'3  176  29  ~/newest.py
-'4  276  24  ~/newest.py
-'5  289  1  ~/newest.py
-'6  224  0  ~/newest.py
-'7  1  0  ~/newest.py
-'8  10  9  ~/newest.py
-'9  141  15  ~/newest.py
+'0  292  0  ~/new.py
+'1  1  0  ~/new
+'2  1  0  ~/read.py
+'3  35  0  ~/bw.py
+'4  29  0  ~/myapp.py
+'5  1  0  ~/result.txt
+'6  1  0  ~/test.py
+'7  295  0  ~/newest.py
+'8  243  26  ~/newest.py
+'9  235  12  ~/newest.py
 
 # Jumplist (newest first):
--'  234  0  ~/newest.py
--'  1  0  ~/newest.py
--'  221  3  ~/newest.py
--'  230  18  ~/newest.py
--'  176  29  ~/newest.py
--'  276  24  ~/newest.py
--'  289  1  ~/newest.py
--'  224  0  ~/newest.py
--'  10  9  ~/newest.py
--'  141  15  ~/newest.py
--'  305  41  ~/newest.py
--'  140  31  ~/newest.py
--'  303  12  ~/newest.py
--'  21  16  ~/newest.py
--'  326  0  ~/newest.py
--'  324  0  ~/newest.py
--'  138  8  ~/newest.py
--'  237  1  ~/newest.py
--'  239  0  ~/newest.py
--'  245  26  ~/newest.py
--'  227  45  ~/newest.py
--'  207  0  ~/newest.py
--'  191  21  ~/newest.py
--'  172  2  ~/newest.py
--'  205  7  ~/newest.py
--'  255  13  ~/newest.py
--'  105  15  ~/newest.py
--'  29  0  ~/newest.py
--'  254  0  ~/newest.py
--'  241  0  ~/newest.py
--'  242  17  ~/newest.py
--'  166  69  ~/newest.py
--'  167  3  ~/newest.py
--'  165  3  ~/newest.py
--'  188  3  ~/newest.py
--'  315  6  ~/newest.py
--'  159  4  ~/newest.py
--'  161  7  ~/newest.py
--'  148  63  ~/newest.py
--'  164  2  ~/newest.py
--'  322  5  ~/newest.py
--'  196  2  ~/newest.py
--'  127  0  ~/new.py
+-'  292  0  ~/new.py
 -'  1  0  ~/new.py
+-'  1  0  ~/new
+-'  1  0  ~/read.py
+-'  35  0  ~/bw.py
+-'  1  0  ~/bw.py
+-'  29  0  ~/myapp.py
+-'  1  0  ~/myapp.py
+-'  1  0  ~/result.txt
+-'  1  0  ~/test.py
+-'  295  0  ~/newest.py
+-'  1  0  ~/newest.py
+-'  243  26  ~/newest.py
+-'  235  12  ~/newest.py
+-'  169  0  ~/newest.py
+-'  343  0  ~/newest.py
+-'  13  0  ~/newest.py
+-'  249  50  ~/newest.py
+-'  56  26  ~/newest.py
+-'  260  0  ~/newest.py
+-'  1  0  ~/pseudo.py
+-'  154  19  ~/newest.py
+-'  94  24  ~/newest.py
+-'  317  0  ~/newest.py
+-'  248  5  ~/newest.py
+-'  15  0  ~/toporlogy.xml
+-'  1  0  ~/toporlogy.xml
+-'  95  18  ~/newest.py
+-'  69  8  ~/newest.py
+-'  256  0  ~/newest.py
+-'  242  99  ~/newest.py
+-'  252  18  ~/newest.py
+-'  186  29  ~/newest.py
+-'  298  24  ~/newest.py
+-'  311  1  ~/newest.py
+-'  244  0  ~/newest.py
+-'  14  22  ~/newest.py
+-'  151  15  ~/newest.py
+-'  323  41  ~/newest.py
+-'  150  31  ~/newest.py
+-'  321  12  ~/newest.py
+-'  26  16  ~/newest.py
+-'  344  0  ~/newest.py
+-'  342  0  ~/newest.py
+-'  148  8  ~/newest.py
+-'  259  1  ~/newest.py
+-'  261  0  ~/newest.py
+-'  267  26  ~/newest.py
+-'  247  45  ~/newest.py
+-'  217  0  ~/newest.py
+-'  201  21  ~/newest.py
+-'  182  2  ~/newest.py
+-'  215  7  ~/newest.py
+-'  277  13  ~/newest.py
+-'  115  15  ~/newest.py
+-'  34  0  ~/newest.py
+-'  276  0  ~/newest.py
+-'  263  0  ~/newest.py
+-'  264  17  ~/newest.py
+-'  176  69  ~/newest.py
+-'  177  3  ~/newest.py
+-'  175  3  ~/newest.py
+-'  198  3  ~/newest.py
+-'  333  6  ~/newest.py
+-'  171  7  ~/newest.py
+-'  158  63  ~/newest.py
+-'  174  2  ~/newest.py
+-'  340  5  ~/newest.py
+-'  206  2  ~/newest.py
+-'  127  0  ~/new.py
 -'  173  0  ~/new.py
 -'  156  11  ~/new.py
 -'  166  53  ~/new.py
@@ -209,14 +250,11 @@
 -'  34  0  ~/new.py
 -'  105  29  ~/new.py
 -'  201  0  ~/result.txt
--'  1  0  ~/result.txt
--'  292  0  ~/new.py
 -'  96  0  ~/new.py
 -'  282  47  ~/result.txt
 -'  31  28  ~/result.txt
 -'  289  6  ~/new.py
 -'  39  2  ~/bw.py
--'  1  0  ~/bw.py
 -'  251  0  ~/new.py
 -'  204  48  ~/new.py
 -'  245  24  ~/new.py
@@ -226,142 +264,13 @@
 -'  192  52  ~/new.py
 -'  290  74  ~/new.py
 -'  199  0  ~/myapp.py
--'  1  0  ~/myapp.py
 -'  190  17  ~/myapp.py
 -'  315  13  ~/myapp.py
--'  184  51  ~/myapp.py
--'  279  4  ~/new.py
--'  257  0  ~/new.py
--'  1  0  ~/n
--'  237  6  ~/new.py
--'  268  7  ~/new.py
--'  227  29  ~/myapp.py
--'  267  71  ~/myapp.py
--'  285  13  ~/myapp.py
--'  224  0  ~/myapp.py
--'  279  2  ~/myapp.py
--'  203  0  ~/myapp.py
--'  223  0  ~/myapp.py
--'  234  48  ~/myapp.py
--'  235  14  ~/myapp.py
--'  232  43  ~/myapp.py
--'  275  21  ~/myapp.py
--'  250  11  ~/myapp.py
--'  239  7  ~/myapp.py
--'  251  10  ~/myapp.py
--'  316  0  ~/myapp.py
--'  284  23  ~/myapp.py
--'  188  10  ~/myapp.py
 
 # History of marks within files (newest to oldest):
 
-> ~/newest.py
-	"	234	0
-	^	221	4
-	.	221	4
-	+	206	2
-	+	192	0
-	+	191	0
-	+	207	2
-	+	206	2
-	+	207	1
-	+	172	2
-	+	227	45
-	+	227	20
-	+	216	0
-	+	209	7
-	+	219	12
-	+	223	35
-	+	227	0
-	+	224	4
-	+	225	0
-	+	221	16
-	+	227	21
-	+	228	0
-	+	239	2
-	+	239	23
-	+	239	0
-	+	239	0
-	+	217	12
-	+	238	0
-	+	239	2
-	+	239	0
-	+	236	51
-	+	234	22
-	+	235	22
-	+	236	21
-	+	218	8
-	+	224	9
-	+	231	20
-	+	238	19
-	+	235	34
-	+	236	39
-	+	237	1
-	+	207	1
-	+	220	24
-	+	223	67
-	+	233	0
-	+	241	0
-	+	239	0
-	+	324	0
-	+	288	0
-	+	289	0
-	+	152	12
-	+	164	13
-	+	288	0
-	+	289	0
-	+	324	0
-	+	288	0
-	+	289	0
-	+	324	0
-	+	24	16
-	+	284	30
-	+	325	29
-	+	323	2
-	+	289	2
-	+	9	12
-	+	145	17
-	+	142	2
-	+	143	2
-	+	144	2
-	+	145	28
-	+	146	12
-	+	326	0
-	+	306	0
-	+	302	17
-	+	304	0
-	+	302	41
-	+	303	12
-	+	140	31
-	+	146	0
-	+	304	0
-	+	302	0
-	+	305	1
-	+	141	15
-	+	10	9
-	+	323	2
-	+	277	0
-	+	221	4
-	+	161	14
-	+	161	26
-	+	172	92
-	+	173	22
-	+	173	44
-	+	162	0
-	+	161	0
-	+	174	0
-	+	173	0
-	+	230	20
-	+	231	14
-	+	230	39
-	+	210	15
-	+	230	41
-	+	226	25
-	+	231	0
-	+	221	4
-
 > ~/new.py
-	"	127	0
+	"	292	0
 	^	173	1
 	.	173	0
 	+	237	0
@@ -419,55 +328,61 @@
 	+	156	0
 	+	173	0
 
-> ~/ne
+> ~/new
 	"	1	0
 
-> ~/topology.xml
-	"	356	7
-	^	356	8
-	.	356	0
-	+	2133	0
-	+	1924	0
-	+	1661	0
-	+	1387	0
-	+	1178	0
-	+	904	0
-	+	695	0
-	+	356	0
-
-> ~/result.txt
-	"	201	0
-	^	282	48
-	.	282	38
-	+	304	38
-	+	284	0
-	+	1	57
-	+	308	11
-	+	329	25
-	+	14	13
+> ~/read.py
+	"	1	0
+	^	3	36
+	.	3	35
+	+	15	0
+	+	4	30
+	+	5	32
+	+	6	0
+	+	6	0
+	+	7	15
+	+	14	23
+	+	8	22
+	+	14	0
+	+	8	6
+	+	14	9
+	+	8	8
+	+	14	22
+	+	12	30
+	+	9	25
+	+	14	2
+	+	11	33
+	+	12	31
+	+	11	34
+	+	11	50
+	+	12	33
+	+	13	33
 	+	2	0
-	+	1	28
-	+	29	48
-	+	31	29
-	+	109	48
-	+	139	63
-	+	141	29
-	+	154	48
-	+	169	25
-	+	156	19
-	+	141	19
-	+	171	26
-	+	184	48
-	+	186	26
-	+	201	48
-	+	228	48
-	+	255	38
-	+	249	0
-	+	256	0
-	+	282	38
+	+	5	0
+	+	6	0
+	+	9	9
+	+	9	2
+	+	11	2
+	+	11	38
+	+	12	4
+	+	13	4
+	+	9	2
+	+	11	2
+	+	11	37
+	+	12	3
+	+	13	4
+	+	11	67
+	+	10	19
+	+	11	2
+	+	12	0
+	+	10	21
+	+	11	0
+	+	10	19
+	+	3	35
+	a	3	0
 
 > ~/bw.py
-	"	39	2
+	"	35	0
 	^	39	3
 	.	39	0
 	+	16	3
@@ -475,7 +390,7 @@
 	+	39	0
 
 > ~/myapp.py
-	"	199	0
+	"	29	0
 	^	190	18
 	.	190	17
 	+	293	28
@@ -580,20 +495,36 @@
 	+	190	17
 	e	285	0
 
-> ~/n
+> ~/result.txt
 	"	1	0
-
-> ~/m
-	"	1	0
-
-> ~/path.py
-	"	22	0
-	^	22	0
-	.	21	28
-	+	13	44
-	+	14	0
-	+	13	31
-	+	21	28
+	^	282	48
+	.	282	38
+	+	304	38
+	+	284	0
+	+	1	57
+	+	308	11
+	+	329	25
+	+	14	13
+	+	2	0
+	+	1	28
+	+	29	48
+	+	31	29
+	+	109	48
+	+	139	63
+	+	141	29
+	+	154	48
+	+	169	25
+	+	156	19
+	+	141	19
+	+	171	26
+	+	184	48
+	+	186	26
+	+	201	48
+	+	228	48
+	+	255	38
+	+	249	0
+	+	256	0
+	+	282	38
 
 > ~/test.py
 	"	1	0
@@ -631,58 +562,170 @@
 	+	26	50
 	+	27	14
 
+> ~/newest.py
+	"	295	0
+	^	243	27
+	.	230	18
+	+	311	0
+	+	162	12
+	+	174	13
+	+	310	0
+	+	311	0
+	+	342	0
+	+	310	0
+	+	311	0
+	+	342	0
+	+	29	16
+	+	306	30
+	+	343	29
+	+	341	2
+	+	311	2
+	+	14	12
+	+	155	17
+	+	152	2
+	+	153	2
+	+	154	2
+	+	155	28
+	+	156	12
+	+	344	0
+	+	324	0
+	+	320	17
+	+	322	0
+	+	320	41
+	+	321	12
+	+	150	31
+	+	156	0
+	+	322	0
+	+	320	0
+	+	323	1
+	+	151	15
+	+	14	22
+	+	341	2
+	+	299	0
+	+	242	100
+	+	171	14
+	+	171	26
+	+	182	92
+	+	183	22
+	+	183	44
+	+	172	0
+	+	171	0
+	+	184	0
+	+	183	0
+	+	252	20
+	+	253	14
+	+	252	39
+	+	220	15
+	+	252	41
+	+	246	25
+	+	253	0
+	+	242	100
+	+	56	27
+	+	55	3
+	+	56	38
+	+	57	11
+	+	56	28
+	+	58	0
+	+	57	0
+	+	95	18
+	+	56	27
+	+	242	119
+	+	249	0
+	+	242	119
+	+	248	6
+	+	94	24
+	+	56	27
+	+	242	112
+	+	250	25
+	+	56	27
+	+	250	2
+	+	14	13
+	+	1	14
+	+	2	1
+	+	1	1
+	+	2	24
+	+	5	0
+	+	96	0
+	+	98	0
+	+	113	0
+	+	320	0
+	+	315	0
+	+	316	0
+	+	332	10
+	+	230	82
+	+	231	19
+	+	230	51
+	+	233	25
+	+	243	0
+	+	243	0
+	+	250	0
+	+	237	0
+	+	230	53
+	+	228	19
+	+	230	35
+	+	235	12
+	+	229	25
+	+	230	18
+
+> ~/pseudo.py
+	"	1	0
+	^	1	0
+	.	31	13
+	+	14	0
+	+	2	23
+	+	6	52
+	+	16	51
+	+	18	60
+	+	23	53
+	+	25	12
+	+	24	66
+	+	32	1
+	+	26	31
+	+	28	0
+	+	27	17
+	+	30	35
+	+	31	17
+	+	16	0
+	+	31	13
+
+> ~/toporlogy.xml
+	"	15	0
+	.	16	0
+	+	16	0
+
+> ~/ne
+	"	1	0
+
+> ~/topology.xml
+	"	356	7
+	^	356	8
+	.	356	0
+	+	2133	0
+	+	1924	0
+	+	1661	0
+	+	1387	0
+	+	1178	0
+	+	904	0
+	+	695	0
+	+	356	0
+
+> ~/n
+	"	1	0
+
+> ~/m
+	"	1	0
+
+> ~/path.py
+	"	22	0
+	^	22	0
+	.	21	28
+	+	13	44
+	+	14	0
+	+	13	31
+	+	21	28
+
 > ~/t
 	"	1	0
 
 > ~/to
 	"	1	0
-
-> ~/read.py
-	"	3	35
-	^	3	36
-	.	3	35
-	+	15	0
-	+	4	30
-	+	5	32
-	+	6	0
-	+	6	0
-	+	7	15
-	+	14	23
-	+	8	22
-	+	14	0
-	+	8	6
-	+	14	9
-	+	8	8
-	+	14	22
-	+	12	30
-	+	9	25
-	+	14	2
-	+	11	33
-	+	12	31
-	+	11	34
-	+	11	50
-	+	12	33
-	+	13	33
-	+	2	0
-	+	5	0
-	+	6	0
-	+	9	9
-	+	9	2
-	+	11	2
-	+	11	38
-	+	12	4
-	+	13	4
-	+	9	2
-	+	11	2
-	+	11	37
-	+	12	3
-	+	13	4
-	+	11	67
-	+	10	19
-	+	11	2
-	+	12	0
-	+	10	21
-	+	11	0
-	+	10	19
-	+	3	35
-	a	3	0

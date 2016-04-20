@@ -1716,3 +1716,17 @@ git commit -m "quit"
 git push origin master
 clear
 exit
+ls
+vi newest.py 
+python newest.py 
+vi newest.py 
+python newest.py 
+clear
+vi newest.py 
+exit
+curl -X POST -d '{"switch":"00:00:ba:71:eb:49:cf:4c","cookie":"0","name":"flow_0","active":"true","eth_type":"0x0x800","ipv4_src":"10.10.5.1","ipv4_dst":"10.10.6.2","actions":"set_eth_src=02:0d:3a:65:56:ec,set_eth_dst=02:54:f4:fb:57:a6,output=1"}' http://128.163.232.72:8080/wm/staticflowpusher/json
+clear
+vi newest.py 
+http://150.182.135.50:8080/wm/staticflowpusher/list/00:00:5e:05:69:a7:25:41/json | python -m json.tool
+curl -s http://150.182.135.50:8080/wm/staticflowpusher/list/00:00:5e:05:69:a7:25:41/json | python -m json.tool
+exit

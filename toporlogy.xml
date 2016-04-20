@@ -1,0 +1,341 @@
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="s1" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3889" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU14-OVS2.31"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30526" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30526" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30526" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30526" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30526" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+ <emulab:vnode name="pcvm1-7" hardware_type="pcvm"/>
+    <host name="s1.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="s2" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3890" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU14-OVS2.31"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30527" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30527" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30527" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30527" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30527" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-9" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3911" mac_address="02f643929f13">
+      <ip address="10.10.5.2" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-10" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3913" mac_address="020dc67bfffd">
+      <ip address="10.10.6.1" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-22" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3931" mac_address="029a66b21ccf">
+      <ip address="10.10.12.1" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-8" hardware_type="pcvm"/>
+    <host name="s2.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="s3" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3891" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU14-OVS2.31"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30528" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30528" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30528" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30528" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30528" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-11" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3914" mac_address="02687d388c88">
+      <ip address="10.10.6.2" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-12" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3916" mac_address="02a004226746">
+      <ip address="10.10.7.1" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-9" hardware_type="pcvm"/>
+    <host name="s3.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="s4" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3892" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU14-OVS2.31"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30529" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30529" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30529" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30529" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30529" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-17" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3923" mac_address="020bcea81c65">
+      <ip address="10.10.9.2" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-19" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3926" mac_address="02d98a764c1b">
+      <ip address="10.10.10.2" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-10" hardware_type="pcvm"/>
+    <host name="s4.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="s5" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3893" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU14-OVS2.31"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30530" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30530" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30530" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30530" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30530" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-4" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3904" mac_address="02692ed2a608">
+      <ip address="10.10.3.1" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-15" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3920" mac_address="02d9acda1a22">
+      <ip address="10.10.8.2" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-16" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3922" mac_address="026b2164d807">
+      <ip address="10.10.9.1" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-21" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3929" mac_address="02f8208f4453">
+      <ip address="10.10.11.2" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-17" hardware_type="pcvm"/>
+    <host name="s5.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="s6" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3894" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU14-OVS2.31"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30531" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30531" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30531" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30531" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30531" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-6" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3907" mac_address="028a3e4700f0">
+      <ip address="10.10.4.1" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-13" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3917" mac_address="02dde7906620">
+      <ip address="10.10.7.2" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-14" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3919" mac_address="02a5252795b0">
+      <ip address="10.10.8.1" type="ipv4"/>
+    </interface>
+    <interface client_id="interface-23" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3932" mac_address="021daa572cc0">
+      <ip address="10.10.12.2" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-18" hardware_type="pcvm"/>
+    <host name="s6.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="h1" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3885" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/Xen-VM.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:GDXEN160218"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30522" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30522" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30522" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30522" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30522" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-0" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3898" mac_address="023e4f603a0f">
+      <ip address="10.10.1.1" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-2" hardware_type="pcvm"/>
+    <host name="h1.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="h2" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3886" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/Xen-VM.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:GDXEN160218"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30523" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30523" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30523" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30523" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30523" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-2" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3901" mac_address="02b6fe1ee301">
+      <ip address="10.10.2.1" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-3" hardware_type="pcvm"/>
+    <host name="h2.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="h3" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3887" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/Xen-VM.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:GDXEN160218"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30524" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30524" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30524" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30524" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30524" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-5" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3905" mac_address="02e55ed780fa">
+      <ip address="10.10.3.2" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-5" hardware_type="pcvm"/>
+    <host name="h3.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="h4" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3888" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/Xen-VM.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:GDXEN160218"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30525" username="charles"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30525" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30525" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30525" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pc1.instageni.utc.edu" port="30525" username="sumairas"/>
+      <emulab:console server="pc1.instageni.utc.edu"/>
+    </services>
+    <interface client_id="interface-7" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3908" mac_address="021e48a24eae">
+      <ip address="10.10.4.2" type="ipv4"/>
+    </interface>
+    <emulab:vnode name="pcvm1-6" hardware_type="pcvm"/>
+    <host name="h4.New-Topology.ch-geni-net.instageni.utc.edu"/>
+  </node>
+  <node xmlns:color="http://www.geni.net/resources/rspec/ext/color/2" xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="GDGN0" exclusive="false" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc2" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3895">
+    <emulab:routable_control_ip/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:GDXEN160218"/>
+    </sliver_type>
+    <color:resource_color xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1" color="gemini">
+      <color:xmlblob xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1">
+        <color:blob xmlns:gemini="http://www.geni.net/resources/rspec/ext/gemini/1">
+          <gemini:node type="global_node">
+            <gemini:monitor_urn name=""/>
+          </gemini:node>
+        </color:blob>
+      </color:xmlblob>
+    </color:resource_color>
+    <emulab:vnode name="pcvm2-3" hardware_type="pcvm"/>
+    <host name="GDGN0.New-Topology.ch-geni-net.instageni.utc.edu" ipv4="150.182.135.49"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pcvm2-3.instageni.utc.edu" port="22" username="charles"/>
+      <login authentication="ssh-keys" hostname="pcvm2-3.instageni.utc.edu" port="22" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pcvm2-3.instageni.utc.edu" port="22" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pcvm2-3.instageni.utc.edu" port="22" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pcvm2-3.instageni.utc.edu" port="22" username="sumairas"/>
+      <emulab:console server="pcvm2-3.instageni.utc.edu"/>
+    </services>
+  </node>
+  <node xmlns:color="http://www.geni.net/resources/rspec/ext/color/2" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="AAGCTRL0" exclusive="false" component_manager_id="urn:publicid:IDN+instageni.utc.edu+authority+cm" component_id="urn:publicid:IDN+instageni.utc.edu+node+pc3" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3884">
+    <emulab:routable_control_ip/>
+    <services>
+      <login authentication="ssh-keys" hostname="pcvm3-2.instageni.utc.edu" port="22" username="charles"/>
+      <login authentication="ssh-keys" hostname="pcvm3-2.instageni.utc.edu" port="22" username="nasir"/>
+      <login authentication="ssh-keys" hostname="pcvm3-2.instageni.utc.edu" port="22" username="sergiori"/>
+      <login authentication="ssh-keys" hostname="pcvm3-2.instageni.utc.edu" port="22" username="zongming"/>
+      <login authentication="ssh-keys" hostname="pcvm3-2.instageni.utc.edu" port="22" username="sumairas"/>
+      <emulab:console server="pcvm3-2.instageni.utc.edu"/>
+      <execute shell="/bin/sh" command="sudo update-rc.d -f floodlight defaults;sudo service floodlight start;sudo update-rc.d -f raptor defaults;sudo service raptor start floodlight"/>
+    </services>
+    <sliver_type name="emulab-xen">
+      <disk_image name="https://www.geni.uchicago.edu/image_metadata.php?uuid=e27906b2-e0ed-11e5-b53d-000000000000"/>
+    </sliver_type>
+    <color:resource_color color="AAG_floodlight"/>
+    <emulab:vnode name="pcvm3-2" hardware_type="pcvm"/>
+    <host name="AAGCTRL0.New-Topology.ch-geni-net.instageni.utc.edu" ipv4="150.182.135.50"/>
+  </node>
+  <link client_id="link-0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3897">
+    <interface_ref client_id="interface-0" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3898"/>
+    <interface_ref client_id="interface-1" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3899"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-1" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3900">
+    <interface_ref client_id="interface-2" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3901"/>
+    <interface_ref client_id="interface-3" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3902"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-2" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3903">
+    <interface_ref client_id="interface-4" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3904"/>
+    <interface_ref client_id="interface-5" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3905"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-3" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3906">
+    <interface_ref client_id="interface-6" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3907"/>
+    <interface_ref client_id="interface-7" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3908"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+  </link>
+  <link client_id="link-4" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3909">
+    <interface_ref client_id="interface-8" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3910"/>
+    <interface_ref client_id="interface-9" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3911"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-8" dest_id="interface-9" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-9" dest_id="interface-8" capacity="50000"/>
+  </link>
+  <link client_id="link-5" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3912">
+    <interface_ref client_id="interface-10" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3913"/>
+    <interface_ref client_id="interface-11" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3914"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-10" dest_id="interface-11" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-11" dest_id="interface-10" capacity="50000"/>
+  </link>
+  <link client_id="link-6" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3915">
+    <interface_ref client_id="interface-12" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3916"/>
+    <interface_ref client_id="interface-13" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3917"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-12" dest_id="interface-13" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-13" dest_id="interface-12" capacity="50000"/>
+  </link>
+  <link client_id="link-7" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3918">
+    <interface_ref client_id="interface-14" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3919"/>
+    <interface_ref client_id="interface-15" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3920"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-14" dest_id="interface-15" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-15" dest_id="interface-14" capacity="50000"/>
+  </link>
+  <link client_id="link-8" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3921">
+    <interface_ref client_id="interface-16" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3922"/>
+    <interface_ref client_id="interface-17" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3923"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-16" dest_id="interface-17" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-17" dest_id="interface-16" capacity="50000"/>
+  </link>
+  <link client_id="link-9" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3924">
+    <interface_ref client_id="interface-18" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3925"/>
+    <interface_ref client_id="interface-19" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3926"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-18" dest_id="interface-19" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-19" dest_id="interface-18" capacity="50000"/>
+  </link>
+  <link client_id="link-10" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3927">
+    <interface_ref client_id="interface-20" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3928"/>
+    <interface_ref client_id="interface-21" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3929"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-20" dest_id="interface-21" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-21" dest_id="interface-20" capacity="50000"/>
+  </link>
+  <link client_id="link-11" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3930">
+    <interface_ref client_id="interface-22" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3931"/>
+    <interface_ref client_id="interface-23" component_id="urn:publicid:IDN+instageni.utc.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+instageni.utc.edu+sliver+3932"/>
+    <component_manager name="urn:publicid:IDN+instageni.utc.edu+authority+cm"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-22" dest_id="interface-23" capacity="50000"/>
+    <property xmlns="http://www.geni.net/resources/rspec/3" source_id="interface-23" dest_id="interface-22" capacity="50000"/>
+  </link>
+  <rs:site_info xmlns:rs="http://www.protogeni.net/resources/rspec/ext/site-info/1">
+    <rs:location country="US" latitude="35.04551" longitude="-85.29890"/>
+  </rs:site_info>
+</rspec>
